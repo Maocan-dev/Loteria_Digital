@@ -67,7 +67,7 @@ export default {
 					'red': '#E63946',
 					'blue': '#008000',
 					'light-blue': '#90EE90',
-					'beige': '#F1FAEE',
+					'beige': '#FFFAF0',
 					'dark-blue': '#006400',
 					'yellow': '#FFF8DC',
 					'orange': '#F4845F'					
