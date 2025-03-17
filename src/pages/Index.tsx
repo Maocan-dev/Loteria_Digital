@@ -1,12 +1,26 @@
-// Update this page (the content is just a fallback if you fail to update the page)
 
-const Index = () => {
+import React from "react";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import LoteriaGame from "@/components/LoteriaGame";
+
+const Index: React.FC = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen flex flex-col bg-loteria-beige">
+      <Header />
+      <main className="flex-1 py-8">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl font-semibold text-loteria-dark-blue mb-4">Draw Your Cards!</h2>
+            <p className="text-loteria-dark-blue mb-6 max-w-2xl mx-auto">
+              Experience the classic Lotería game in digital form. Click the cards to flip them, 
+              use "Next Card" to reveal the next one, or try "Auto-Play" for a hands-free experience!
+            </p>
+          </div>
+          <LoteriaGame />
+        </div>
+      </main>
+      <Footer />
     </div>
   );
 };
