@@ -121,7 +121,7 @@ const LoteriaDeck: React.FC<LoteriaDeckProps> = ({ cards, onShuffle }) => {
           variant="outline"
           className="bg-loteria-blue text-white hover:bg-loteria-dark-blue"
         >
-          <Shuffle className="mr-2 h-4 w-4" /> Shuffle
+          <Shuffle className="mr-2 h-4 w-4" /> Barajear
         </Button>
         <Button 
           onClick={toggleAutoPlay}
@@ -134,7 +134,7 @@ const LoteriaDeck: React.FC<LoteriaDeckProps> = ({ cards, onShuffle }) => {
             </>
           ) : (
             <>
-              <Play className="mr-2 h-4 w-4" /> Auto-Play
+              <Play className="mr-2 h-4 w-4" /> Automatico
             </>
           )}
         </Button>
