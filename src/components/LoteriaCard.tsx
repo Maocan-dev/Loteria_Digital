@@ -37,10 +37,11 @@ const LoteriaCard: React.FC<LoteriaCardProps> = ({
             {card.spanishName}
           </div>
           <div className="flex-1 flex items-center justify-center p-2">
-            <div className="h-full w-full bg-gray-200 flex items-center justify-center text-sm">
-              {/* In a real app, we would display the actual card image here */}
-              {card.name} Image
-            </div>
+            <img 
+              src={card.imageUrl} 
+              alt={card.name} 
+              className="h-full w-full object-contain"
+            />
           </div>
           <div className="bg-loteria-blue text-loteria-beige p-1 text-center text-sm">
             {card.id}
