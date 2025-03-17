@@ -3,7 +3,7 @@ import React from "react";
 
 const Header: React.FC = () => {
   return (
-    <header className="bg-loteria-dark-green text-loteria-beige py-4">
+    <header className="bg-loteria-darkgreen text-loteria-beige py-4">
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center justify-center">
           <h1 className="text-4xl font-bold">¡Lotería!</h1>
