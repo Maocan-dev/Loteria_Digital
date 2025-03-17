@@ -13,8 +13,8 @@ const Index: React.FC = () => {
           <div className="text-center mb-8">
             <h2 className="text-2xl font-semibold text-loteria-dark-blue mb-4">Draw Your Cards!</h2>
             <p className="text-loteria-dark-blue mb-6 max-w-2xl mx-auto">
-              Experimenta el juego de la loteria de manera digital.  
-              Utiliza "Next Card" para cambiar entre cartas, o prueba el "Auto-Play" para una experiencia manos libres!
+              Experimenta el juego de la lotería de manera digital.  
+              Utiliza el boton "Siguiente" para cambiar entre cartas, o prueba el "Automatico" para una experiencia manos libres!
             </p>
           </div>
           <LoteriaGame />
