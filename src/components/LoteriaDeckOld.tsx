@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import LoteriaCard from "./LoteriaCard";
 import { LoteriaCard as LoteriaCardType } from "../data/loteriaCards";

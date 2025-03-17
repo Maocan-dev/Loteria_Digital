@@ -7,7 +7,7 @@ export interface LoteriaCard {
 }
 
 const loteriaCards: LoteriaCard[] = [
-  { id: 1, name: "The Rooster", spanishName: "El Gallo", imageUrl: "https://loto-flip-fun.lovable.app/images/carta (1).jpg" },
+  { id: 1, name: "The Rooster", spanishName: "El Gallo", imageUrl: "/images/carta (1).jpg" },
   { id: 2, name: "The Little Devil", spanishName: "El Diablito", imageUrl: "/images/carta (2).jpg" },
   { id: 3, name: "The Lady", spanishName: "La Dama", imageUrl: "/images/carta (3).jpg" },
   { id: 4, name: "The Dandy", spanishName: "El Catrín", imageUrl: "/images/carta (4).jpg" },
