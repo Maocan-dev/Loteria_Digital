@@ -25,7 +25,7 @@ const LoteriaCard: React.FC<LoteriaCardProps> = ({
           <div className="flex-1 flex items-center justify-center p-2 py-[3px]">
             <img src={card.imageUrl} alt={card.name} className="h-full w-full object-contain" />
           </div>
-          <div className="bg-loteria-blue text-loteria-beige p-1 text-center text-sm">
+          <div className="bg-loteria-green text-loteria-beige p-1 text-center text-sm">
             {card.id}
           </div>
         </div>
