@@ -16,7 +16,7 @@ const LoteriaCard: React.FC<LoteriaCardProps> = ({
   // Using placeholder for card back pattern
   const cardBackUrl = "/placeholder.svg";
   return <div className={cn("loteria-card w-full h-full rounded-md cursor-pointer transition-transform", isActive && "ring-4 ring-loteria-yellow shadow-lg")} onClick={onFlip}>
-      <div className={cn("card-inner transition-all duration-1200", isFlipped ? "animate-flip" : "animate-flip-back")}>
+      <div className={cn("card-inner transition-all duration-400", isFlipped ? "animate-flip" : "animate-flip-back")}>
         {/* Card Front (The actual Lotería card) */}
         <div className="card-front rounded-md overflow-hidden border-2 border-loteria-red flex flex-col bg-loteria-beige">
           <div className="bg-loteria-red text-loteria-beige p-2 text-center font-bold">
