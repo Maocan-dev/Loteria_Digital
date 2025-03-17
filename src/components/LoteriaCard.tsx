@@ -25,13 +25,13 @@ const LoteriaCard: React.FC<LoteriaCardProps> = ({
           <div className="flex-1 flex items-center justify-center p-2 py-[3px]">
             <img src={card.imageUrl} alt={card.name} className="h-full w-full object-contain" />
           </div>
-          <div className="bg-loteria-blue text-loteria-beige p-1 text-center text-sm">
+          <div className="bg-loteria-green text-loteria-beige p-1 text-center text-sm">
             {card.id}
           </div>
         </div>
         
         {/* Card Back */}
-        <div className="card-back rounded-md overflow-hidden border-2 border-loteria-dark-blue bg-loteria-dark-blue">
+        <div className="card-back rounded-md overflow-hidden border-2 border-loteria-dark-green bg-loteria-dark-green">
           <div className="h-full w-full flex items-center justify-center bg-opacity-50 bg-repeat p-2">
             <div className="text-loteria-beige font-bold text-xl">
               Lotería
