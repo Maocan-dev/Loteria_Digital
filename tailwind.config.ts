@@ -70,10 +70,7 @@ export default {
 					'beige': '#F1FAEE',
 					'dark-blue': '#1D3557',
 					'yellow': '#FFD166',
-					'orange': '#F4845F'
-					'green': '##008f39'
-					'light-green': '#12a14b'
-					'dark-green': '#0b6730'
+					'orange': '#F4845F'				
 				}
 			},
 			borderRadius: {
