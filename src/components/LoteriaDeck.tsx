@@ -34,7 +34,7 @@ const LoteriaDeck: React.FC<LoteriaDeckProps> = ({ cards, onShuffle }) => {
       setIsFlipped(true);
       toast({
         title: "¡Lotería!",
-        description: `First card: ${cards[0].spanishName}`,
+        description: `Primer Carta: ${cards[0].spanishName}`,
       });
     } else {
       // Flip the current card
@@ -53,13 +53,13 @@ const LoteriaDeck: React.FC<LoteriaDeckProps> = ({ cards, onShuffle }) => {
       setIsFlipped(true);
       toast({
         title: "¡Lotería!",
-        description: `Next card: ${cards[currentCardIndex + 1].spanishName}`,
+        description: `Siguiente: ${cards[currentCardIndex + 1].spanishName}`,
       });
     } else {
       // End of deck
       toast({
         title: "End of Deck",
-        description: "You've gone through all the cards!",
+        description: "Se han terminado las cartas!",
       });
     }
   };
@@ -73,8 +73,8 @@ const LoteriaDeck: React.FC<LoteriaDeckProps> = ({ cards, onShuffle }) => {
       }
       setIsAutoPlaying(false);
       toast({
-        title: "Auto-play Stopped",
-        description: "Manual mode activated",
+        title: "Juego automatico detenido",
+        description: "Modo manual activado",
       });
     } else {
       // Start auto-play
@@ -85,8 +85,8 @@ const LoteriaDeck: React.FC<LoteriaDeckProps> = ({ cards, onShuffle }) => {
       setIntervalId(id);
       setIsAutoPlaying(true);
       toast({
-        title: "Auto-play Started",
-        description: "Cards will flip automatically",
+        title: "Juego automatico encendido",
+        description: "Las cartas saldran automaticamente",
       });
     }
   };
@@ -108,8 +108,8 @@ const LoteriaDeck: React.FC<LoteriaDeckProps> = ({ cards, onShuffle }) => {
     // Shuffle the deck
     onShuffle();
     toast({
-      title: "Deck Shuffled",
-      description: "Cards have been randomized",
+      title: "Mezclador",
+      description: "Las cartas han sido barajeadas",
     });
   };
 
@@ -152,7 +152,7 @@ const LoteriaDeck: React.FC<LoteriaDeckProps> = ({ cards, onShuffle }) => {
             />
           ) : (
             <div className="w-full h-full flex items-center justify-center border-2 border-dashed border-gray-300 rounded-md text-gray-400">
-              Start the game by clicking "Next Card"
+              Comienza el juego dando click en  "Comenzar"
             </div>
           )}
         </div>
@@ -161,7 +161,7 @@ const LoteriaDeck: React.FC<LoteriaDeckProps> = ({ cards, onShuffle }) => {
           onClick={handleNextCard}
           className="bg-loteria-red hover:bg-loteria-red/80 text-white mt-4"
         >
-          {currentCardIndex === null ? "Start Game" : "Next Card"}
+          {currentCardIndex === null ? "Comenzar" : "Siguiente"}
         </Button>
 
         {/* Game Progress */}

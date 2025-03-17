@@ -17,10 +17,10 @@ const loteriaCards: LoteriaCard[] = [
   { id: 8, name: "The Bottle", spanishName: "La Botella", imageUrl: "/images/carta (8).jpg" },
   { id: 9, name: "The Barrel", spanishName: "El Barril", imageUrl: "/images/carta (9).jpg" },
   { id: 10, name: "The Tree", spanishName: "El Árbol", imageUrl: "/images/carta (10).jpg" },
-  { id: 11, name: "The Melon", spanishName: "El Melón", imageUrl: "/images/carta (11).jpg" },
+  { id: 11, name: "The Cantaloupe", spanishName: "El Melón", imageUrl: "/images/carta (11).jpg" },
   { id: 12, name: "The Brave Man", spanishName: "El Valiente", imageUrl: "/images/carta (12).jpg" },
   { id: 13, name: "The Gorrito", spanishName: "El Gorrito", imageUrl: "/images/carta (13).jpg" },
-  { id: 14, name: "Death", spanishName: "La Muerte", imageUrl: "/images/carta (14).jpg" },
+  { id: 14, name: "The Death", spanishName: "La Muerte", imageUrl: "/images/carta (14).jpg" },
   { id: 15, name: "The Pear", spanishName: "La Pera", imageUrl: "/images/carta (15).jpg" },
   { id: 16, name: "The Flag", spanishName: "La Bandera", imageUrl: "/images/carta (16).jpg" }
 ];
