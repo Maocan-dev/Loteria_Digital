@@ -31,7 +31,7 @@ const LoteriaCard: React.FC<LoteriaCardProps> = ({
         </div>
         
         {/* Card Back */}
-        <div className="card-back rounded-md overflow-hidden border-2 border-loteria-red bg-loteria-red">
+        <div className="card-back rounded-md overflow-hidden border-2 border-loteria-green bg-loteria-green">
           <div className="h-full w-full flex items-center justify-center bg-opacity-50 bg-repeat p-2">
             <div className="text-loteria-beige font-bold text-xl">
               Lotería
