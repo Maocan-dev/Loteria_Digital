@@ -124,14 +124,14 @@ const LoteriaDeck: React.FC<LoteriaDeckProps> = ({ cards, onShuffle }) => {
         <Button 
           onClick={handleShuffle}
           variant="outline"
-          className="bg-loteria-green text-white hover:bg-loteria-dark-green text-white"
+          className="bg-loteria-green text-white hover:bg-loteria-dark-green "
         >
           <Shuffle className="mr-2 h-4 w-4" /> Barajear
         </Button>
         <Button 
           onClick={toggleAutoPlay}
           variant="outline"
-          className={`${isAutoPlaying ? 'bg-loteria-red' : 'bg-loteria-yellow'} text-black hover:bg-loteria-red`}
+          className={`${isAutoPlaying ? 'bg-loteria-red' : 'bg-loteria-yellow'} text-black hover:bg-loteria-orange`}
         >
           {isAutoPlaying ? (
             <>
