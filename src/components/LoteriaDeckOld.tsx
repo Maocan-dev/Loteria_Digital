@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import LoteriaCard from "./LoteriaCard";
 import { LoteriaCard as LoteriaCardType } from "../data/loteriaCards";
@@ -18,100 +19,94 @@ const LoteriaDeck: React.FC<LoteriaDeckProps> = ({ cards, onShuffle }) => {
   const { toast } = useToast();
 
   useEffect(() => {
-    if (isAutoPlaying) {
-      const id = window.setInterval(() => {
-        setCurrentCardIndex((prevIndex) => {
-          if (prevIndex === null) return 0; // Initialize game
-          if (prevIndex < cards.length - 1) return prevIndex + 1; // Next card
-          
-          // End of deck
-          clearInterval(id);
-          toast({
-            title: "End of Deck",
-            description: "Se han terminado las cartas!",
-          });
-          setIsAutoPlaying(false); // Stop autoplay
-          return null;
-        });
-      }, 3000);
-
-      setIntervalId(id);
-
-      return () => clearInterval(id); // Cleanup interval on unmount or state change
-    } else {
+    // Clean up interval on unmount
+    return () => {
       if (intervalId !== null) {
         clearInterval(intervalId);
-        setIntervalId(null);
       }
-    }
-  }, [isAutoPlaying]);
+    };
+  }, [intervalId]);
 
   const handleFlipCard = () => {
     if (currentCardIndex === null) {
-      setCurrentCardIndex(0); // Start the game
+      // Start the game by revealing the first card
+      setCurrentCardIndex(0);
       setIsFlipped(true);
       toast({
         title: "¡Lotería!",
         description: `Primer Carta: ${cards[0].spanishName}`,
       });
     } else {
-      setIsFlipped(!isFlipped); // Flip the current card
+      // Flip the current card
+      setIsFlipped(!isFlipped);
     }
   };
 
   const handleNextCard = () => {
-    setCurrentCardIndex((prevIndex) => {
-      if (prevIndex === null) {
-        setIsFlipped(true); // Initialize game
-        return 0;
-      }
-
-      if (prevIndex < cards.length - 1) {
-        toast({
-          title: "¡Lotería!",
-          description: `Siguiente: ${cards[prevIndex + 1].spanishName}`,
-        });
-        return prevIndex + 1;
-      }
-
+    if (currentCardIndex === null) {
+      // Start the game
+      setCurrentCardIndex(0);
+      setIsFlipped(true);
+    } else if (currentCardIndex < cards.length - 1) {
+      // Move to next card
+      setCurrentCardIndex(currentCardIndex + 1);
+      setIsFlipped(true);
+      toast({
+        title: "¡Lotería!",
+        description: `Siguiente: ${cards[currentCardIndex + 1].spanishName}`,
+      });
+    } else {
+      // End of deck
       toast({
         title: "End of Deck",
         description: "Se han terminado las cartas!",
       });
-      return null;
-    });
+    }
   };
 
   const toggleAutoPlay = () => {
     if (isAutoPlaying) {
-      setIsAutoPlaying(false); // Stop autoplay
+      // Stop auto-play
+      if (intervalId !== null) {
+        clearInterval(intervalId);
+        setIntervalId(null);
+      }
+      setIsAutoPlaying(false);
       toast({
         title: "Juego automatico detenido",
         description: "Modo manual activado",
       });
     } else {
-      if (currentCardIndex === null) {
-        setCurrentCardIndex(0); // Start game if not started
-        setIsFlipped(true);
-      }
-      setIsAutoPlaying(true); // Start autoplay
+      // Start auto-play
+      const id = window.setInterval(() => {
+        handleNextCard();
+      }, 3000) as unknown as number;
+      
+      setIntervalId(id);
+      setIsAutoPlaying(true);
       toast({
         title: "Juego automatico encendido",
-        description: "Las cartas saldrán automáticamente",
+        description: "Las cartas saldran automaticamente",
       });
     }
   };
 
   const handleShuffle = () => {
-    setCurrentCardIndex(null); // Reset game
+    // Reset game state
+    setCurrentCardIndex(null);
     setIsFlipped(false);
-
-    // Stop autoplay if active
+    
+    // Stop auto-play if it's running
     if (isAutoPlaying) {
+      if (intervalId !== null) {
+        clearInterval(intervalId);
+        setIntervalId(null);
+      }
       setIsAutoPlaying(false);
     }
-
-    onShuffle(); // Shuffle cards
+    
+    // Shuffle the deck
+    onShuffle();
     toast({
       title: "Mezclador",
       description: "Las cartas han sido barajeadas",
@@ -139,13 +134,14 @@ const LoteriaDeck: React.FC<LoteriaDeckProps> = ({ cards, onShuffle }) => {
             </>
           ) : (
             <>
-              <Play className="mr-2 h-4 w-4" /> Automático
+              <Play className="mr-2 h-4 w-4" /> Automatico
             </>
           )}
         </Button>
       </div>
 
       <div className="flex flex-col items-center">
+        {/* Current Card Display */}
         <div className="w-64 h-96 mb-6" onClick={handleFlipCard}>
           {currentCardIndex !== null ? (
             <LoteriaCard 
@@ -156,7 +152,7 @@ const LoteriaDeck: React.FC<LoteriaDeckProps> = ({ cards, onShuffle }) => {
             />
           ) : (
             <div className="w-full h-full flex items-center justify-center border-2 border-dashed border-gray-300 rounded-md text-gray-400">
-              Comienza el juego dando click en "Comenzar"
+              Comienza el juego dando click en  "Comenzar"
             </div>
           )}
         </div>
@@ -168,9 +164,10 @@ const LoteriaDeck: React.FC<LoteriaDeckProps> = ({ cards, onShuffle }) => {
           {currentCardIndex === null ? "Comenzar" : "Siguiente"}
         </Button>
 
+        {/* Game Progress */}
         {currentCardIndex !== null && (
           <div className="mt-4 text-sm text-muted-foreground">
-            Carta {currentCardIndex + 1} de {cards.length}
+            Card {currentCardIndex + 1} of {cards.length}
           </div>
         )}
       </div>
