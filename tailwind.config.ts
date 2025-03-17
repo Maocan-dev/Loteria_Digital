@@ -65,10 +65,10 @@ export default {
 				},
 				loteria: {
 					'red': '#E63946',
-					'blue': '#008000',
-					'light-blue': '#90EE90',
+					'green': '#008000',
+					'light-green': '#90EE90',
 					'beige': '#FFFAF0',
-					'dark-blue': '#006400',
+					'dark-green': '#006400',
 					'yellow': '#FFF8DC',
 					'orange': '#F4845F'					
 				}
