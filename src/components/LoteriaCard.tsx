@@ -19,7 +19,7 @@ const LoteriaCard: React.FC<LoteriaCardProps> = ({
       <div className={cn("card-inner transition-all duration-800", isFlipped ? "animate-flip" : "animate-flip-back")}>
         {/* Card Front (The actual Lotería card) */}
         <div className="card-front rounded-md overflow-hidden border-2 border-loteria-dark-blue flex flex-col bg-loteria-beige">
-          <div className="bg-loteria-green text-loteria-beige p-2 text-center font-bold">
+          <div className="bg-loteria-red text-loteria-beige p-2 text-center font-bold">
             {card.spanishName}
           </div>
           <div className="flex-1 flex items-center justify-center p-2 py-[3px]">
