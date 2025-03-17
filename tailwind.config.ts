@@ -69,7 +69,7 @@ export default {
 					'light-blue': '#90EE90',
 					'beige': '#F1FAEE',
 					'dark-blue': '#006400',
-					'yellow': '#FFD166',
+					'yellow': '#FFF8DC',
 					'orange': '#F4845F'					
 				}
 			},
