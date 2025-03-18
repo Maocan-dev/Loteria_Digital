@@ -1,12 +1,12 @@
 
-export interface LoteriaCard {
+export interface Card {
   id: number;
   name: string;
   spanishName: string;
   imageUrl: string;
 }
 
-const loteriaCards: LoteriaCard[] = [
+const loteriaCards: Card[] = [
   { id: 1, name: "The Rooster", spanishName: "El Gallo", imageUrl: "/images/carta (1).jpg" },
   { id: 2, name: "The Little Devil", spanishName: "El Diablito", imageUrl: "/images/carta (2).jpg" },
   { id: 3, name: "The Lady", spanishName: "La Dama", imageUrl: "/images/carta (3).jpg" },
@@ -62,4 +62,5 @@ const loteriaCards: LoteriaCard[] = [
   { id: 53, name: "The Harp", spanishName: "El Arpa", imageUrl: "/images/carta (53).jpg" },
   { id: 54, name: "The Frog", spanishName: "La Rana", imageUrl: "/images/carta (54).jpg" }
 ];
+
 export default loteriaCards;
