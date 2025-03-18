@@ -1,12 +1,15 @@
-import React, { useState } from "react";
-import { LoteriaCard as LoteriaCardType } from "../data/loteriaCards";
+
+import React from "react";
+import { Card } from "../data/loteriaCards";
 import { cn } from "@/lib/utils";
+
 interface LoteriaCardProps {
-  card: LoteriaCardType;
+  card: Card;
   isFlipped: boolean;
   onFlip?: () => void;
   isActive?: boolean;
 }
+
 const LoteriaCard: React.FC<LoteriaCardProps> = ({
   card,
   isFlipped,
@@ -15,8 +18,17 @@ const LoteriaCard: React.FC<LoteriaCardProps> = ({
 }) => {
   // Using placeholder for card back pattern
   const cardBackUrl = "/placeholder.svg";
-  return <div className={cn("loteria-card w-full h-full rounded-md cursor-pointer transition-transform", isActive && "ring-4 ring-loteria-yellow shadow-lg")} onClick={onFlip}>
-      <div className={cn("card-inner transition-all duration-800", isFlipped ? "animate-flip" : "animate-flip-back")}>
+  
+  return (
+    <div 
+      className={cn("loteria-card w-full h-full rounded-md cursor-pointer transition-transform", 
+        isActive && "ring-4 ring-loteria-yellow shadow-lg"
+      )} 
+      onClick={onFlip}
+    >
+      <div className={cn("card-inner transition-all duration-800", 
+        isFlipped ? "animate-flip" : "animate-flip-back"
+      )}>
         {/* Card Front (The actual Lotería card) */}
         <div className="card-front rounded-md overflow-hidden border-2 border-loteria-red flex flex-col bg-loteria-beige">
           <div className="bg-loteria-red text-loteria-beige p-2 text-center font-bold">
@@ -39,6 +51,8 @@ const LoteriaCard: React.FC<LoteriaCardProps> = ({
           </div>
         </div>
       </div>
-    </div>;
+    </div>
+  );
 };
+
 export default LoteriaCard;

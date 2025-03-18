@@ -1,8 +1,8 @@
 
-import { LoteriaCard } from "../data/loteriaCards";
+import { Card } from "../data/loteriaCards";
 
 // Fisher-Yates shuffle algorithm
-export const shuffleDeck = (deck: LoteriaCard[]): LoteriaCard[] => {
+export const shuffleDeck = (deck: Card[]): Card[] => {
   const shuffledDeck = [...deck];
   for (let i = shuffledDeck.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
