@@ -9,7 +9,7 @@ export interface Card {
 const loteriaCards: Card[] = [
   { id: 1, name: "The Rooster", spanishName: "El Gallo", imageUrl: "/images/carta (1).jpg" },
   { id: 2, name: "The Little Devil", spanishName: "El Diablito", imageUrl: "/images/carta (2).jpg" },
-  { id: 3, name: "The Lady", spanishName: "La Dama", imageUrl: "/images/carta (3).jpg" },
+  { id: 3, name: "The Lady", spanishName: "La Dama", imageUrl: "/images4/carta (3).jpg" },
   { id: 4, name: "The Dandy", spanishName: "El Catrín", imageUrl: "/images/carta (4).jpg" },
   { id: 5, name: "The Umbrella", spanishName: "El Paraguas", imageUrl: "/images/carta (5).jpg" },
   { id: 6, name: "The Mermaid", spanishName: "La Sirena", imageUrl: "/images/carta (6).jpg" },

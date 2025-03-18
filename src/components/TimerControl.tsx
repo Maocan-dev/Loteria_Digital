@@ -15,8 +15,8 @@ interface TimerControlProps {
 const TimerControl: React.FC<TimerControlProps> = ({ 
   timerDelay, 
   setTimerDelay, 
-  min = 1, 
-  max = 5, 
+  min = 2, 
+  max = 6, 
   step = 1 
 }) => {
   const { t } = useLanguage();
