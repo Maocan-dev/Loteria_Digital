@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import LoteriaCard from "./LoteriaCard";
-import { LoteriaCard as LoteriaCardType } from "../data/loteriaCards";
+import { Card } from "../data/loteriaCards";
 import { Button } from "@/components/ui/button";
 import { Shuffle, Play, Pause } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 
 interface LoteriaDeckProps {
-  cards: LoteriaCardType[];
+  cards: Card[];
   onShuffle: () => void;
 }
 
@@ -18,7 +18,6 @@ const LoteriaDeck: React.FC<LoteriaDeckProps> = ({ cards, onShuffle }) => {
   const { toast } = useToast();
 
   useEffect(() => {
-    // Clean up interval on unmount
     return () => {
       if (intervalId !== null) {
         clearInterval(intervalId);
@@ -28,7 +27,6 @@ const LoteriaDeck: React.FC<LoteriaDeckProps> = ({ cards, onShuffle }) => {
 
   const handleFlipCard = () => {
     if (currentCardIndex === null) {
-      // Start the game by revealing the first card
       setCurrentCardIndex(0);
       setIsFlipped(true);
       toast({
@@ -36,18 +34,15 @@ const LoteriaDeck: React.FC<LoteriaDeckProps> = ({ cards, onShuffle }) => {
         description: `Primer Carta: ${cards[0].spanishName}`,
       });
     } else {
-      // Flip the current card
       setIsFlipped(!isFlipped);
     }
   };
 
   const handleNextCard = () => {
     if (currentCardIndex === null) {
-      // Start the game
       setCurrentCardIndex(0);
       setIsFlipped(true);
     } else if (currentCardIndex < cards.length - 1) {
-      // Move to next card
       setCurrentCardIndex(currentCardIndex + 1);
       setIsFlipped(true);
       toast({
@@ -55,7 +50,6 @@ const LoteriaDeck: React.FC<LoteriaDeckProps> = ({ cards, onShuffle }) => {
         description: `Siguiente: ${cards[currentCardIndex + 1].spanishName}`,
       });
     } else {
-      // End of deck
       toast({
         title: "End of Deck",
         description: "Se han terminado las cartas!",
@@ -65,7 +59,6 @@ const LoteriaDeck: React.FC<LoteriaDeckProps> = ({ cards, onShuffle }) => {
 
   const toggleAutoPlay = () => {
     if (isAutoPlaying) {
-      // Stop auto-play
       if (intervalId !== null) {
         clearInterval(intervalId);
         setIntervalId(null);
@@ -76,7 +69,6 @@ const LoteriaDeck: React.FC<LoteriaDeckProps> = ({ cards, onShuffle }) => {
         description: "Modo manual activado",
       });
     } else {
-      // Start auto-play
       const id = window.setInterval(() => {
         handleNextCard();
       }, 3000) as unknown as number;
@@ -91,11 +83,9 @@ const LoteriaDeck: React.FC<LoteriaDeckProps> = ({ cards, onShuffle }) => {
   };
 
   const handleShuffle = () => {
-    // Reset game state
     setCurrentCardIndex(null);
     setIsFlipped(false);
     
-    // Stop auto-play if it's running
     if (isAutoPlaying) {
       if (intervalId !== null) {
         clearInterval(intervalId);
@@ -104,7 +94,6 @@ const LoteriaDeck: React.FC<LoteriaDeckProps> = ({ cards, onShuffle }) => {
       setIsAutoPlaying(false);
     }
     
-    // Shuffle the deck
     onShuffle();
     toast({
       title: "Mezclador",
@@ -140,7 +129,6 @@ const LoteriaDeck: React.FC<LoteriaDeckProps> = ({ cards, onShuffle }) => {
       </div>
 
       <div className="flex flex-col items-center">
-        {/* Current Card Display */}
         <div className="w-64 h-96 mb-6" onClick={handleFlipCard}>
           {currentCardIndex !== null ? (
             <LoteriaCard 
@@ -163,7 +151,6 @@ const LoteriaDeck: React.FC<LoteriaDeckProps> = ({ cards, onShuffle }) => {
           {currentCardIndex === null ? "Comenzar" : "Siguiente"}
         </Button>
 
-        {/* Game Progress */}
         {currentCardIndex !== null && (
           <div className="mt-4 text-sm text-muted-foreground">
             Card {currentCardIndex + 1} of {cards.length}
