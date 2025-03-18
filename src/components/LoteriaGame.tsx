@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useToast } from '../hooks/use-toast';
 import { Button } from './ui/button';
@@ -11,9 +10,11 @@ import SoundToggle from './SoundToggle';
 import TimerControl from './TimerControl';
 import CardHistory from './CardHistory';
 import soundPlayer from '../utils/soundUtils';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const LoteriaGame = () => {
   const { toast } = useToast();
+  const { t } = useLanguage();
   const [deck, setDeck] = useState<Card[]>([]);
   const [currentCardIndex, setCurrentCardIndex] = useState(-1);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -22,18 +23,15 @@ const LoteriaGame = () => {
   const [flippedCards, setFlippedCards] = useState<Card[]>([]);
   const timerRef = useRef<number | null>(null);
 
-  // Initialize the deck on component mount
   useEffect(() => {
     initializeDeck();
     soundPlayer.setEnabled(isSoundEnabled);
   }, []);
 
-  // Update sound player when sound setting changes
   useEffect(() => {
     soundPlayer.setEnabled(isSoundEnabled);
   }, [isSoundEnabled]);
 
-  // Handle auto-play timer
   useEffect(() => {
     if (isPlaying) {
       timerRef.current = window.setTimeout(() => {
@@ -68,8 +66,8 @@ const LoteriaGame = () => {
   const nextCard = useCallback(() => {
     if (currentCardIndex >= deck.length - 1) {
       toast({
-        title: "End of Deck",
-        description: "You've reached the end of the deck.",
+        title: t('toast.endDeck'),
+        description: t('toast.endDeckDesc'),
       });
       setIsPlaying(false);
       return;
@@ -81,37 +79,35 @@ const LoteriaGame = () => {
     const newCard = deck[nextIndex];
     setFlippedCards(prev => [...prev, newCard]);
     
-    // Play sound for the card
     if (newCard) {
       soundPlayer.playCardSound(newCard.id);
     }
-  }, [currentCardIndex, deck, toast]);
+  }, [currentCardIndex, deck, toast, t]);
 
   const resetGame = useCallback(() => {
     initializeDeck();
     toast({
-      title: "Game Reset",
-      description: "The deck has been shuffled and the game has been reset.",
+      title: t('toast.gameReset'),
+      description: t('toast.gameResetDesc'),
     });
-  }, [initializeDeck, toast]);
+  }, [initializeDeck, toast, t]);
 
   const shuffleAndReset = useCallback(() => {
     initializeDeck();
     toast({
-      title: "Deck Shuffled",
-      description: "The deck has been shuffled and the game has been reset.",
+      title: t('toast.deckShuffled'),
+      description: t('toast.deckShuffledDesc'),
     });
-  }, [initializeDeck, toast]);
+  }, [initializeDeck, toast, t]);
 
   const toggleSound = useCallback(() => {
     setIsSoundEnabled(prev => !prev);
     toast({
-      title: isSoundEnabled ? "Sound Off" : "Sound On",
-      description: isSoundEnabled ? "Sound has been disabled." : "Sound has been enabled.",
+      title: isSoundEnabled ? t('toast.soundOff') : t('toast.soundOn'),
+      description: isSoundEnabled ? t('toast.soundOffDesc') : t('toast.soundOnDesc'),
     });
-  }, [isSoundEnabled, toast]);
+  }, [isSoundEnabled, toast, t]);
 
-  // Get current card to display
   const currentCard = currentCardIndex >= 0 && currentCardIndex < deck.length
     ? deck[currentCardIndex]
     : null;
@@ -128,7 +124,7 @@ const LoteriaGame = () => {
                 onClick={togglePlay}
               >
                 {isPlaying ? <Pause className="w-4 h-4 mr-1" /> : <Play className="w-4 h-4 mr-1" />}
-                {isPlaying ? 'Pause' : 'Play'}
+                {isPlaying ? t('game.pause') : t('game.play')}
               </Button>
               
               <Button 
@@ -138,7 +134,7 @@ const LoteriaGame = () => {
                 disabled={currentCardIndex >= deck.length - 1}
               >
                 <SkipForward className="w-4 h-4 mr-1" />
-                Next
+                {t('game.next')}
               </Button>
               
               <Button 
@@ -147,7 +143,7 @@ const LoteriaGame = () => {
                 onClick={resetGame}
               >
                 <RotateCcw className="w-4 h-4 mr-1" />
-                Reset
+                {t('game.reset')}
               </Button>
               
               <Button 
@@ -156,7 +152,7 @@ const LoteriaGame = () => {
                 onClick={shuffleAndReset}
               >
                 <Shuffle className="w-4 h-4 mr-1" />
-                Shuffle
+                {t('game.shuffle')}
               </Button>
             </div>
 
@@ -176,7 +172,7 @@ const LoteriaGame = () => {
 
         <div className="space-y-6">
           <div className="bg-white rounded-lg shadow-md p-4">
-            <h2 className="text-lg font-semibold mb-4">Game Settings</h2>
+            <h2 className="text-lg font-semibold mb-4">{t('settings.title')}</h2>
             <div className="space-y-6">
               <TimerControl 
                 timerDelay={timerDelay}
@@ -190,11 +186,11 @@ const LoteriaGame = () => {
           </div>
 
           <div className="bg-white rounded-lg shadow-md p-4">
-            <h2 className="text-lg font-semibold mb-4">Game Stats</h2>
+            <h2 className="text-lg font-semibold mb-4">{t('stats.title')}</h2>
             <div className="space-y-2">
-              <p className="text-sm">Cards Seen: {flippedCards.length}</p>
-              <p className="text-sm">Remaining: {deck.length - currentCardIndex - 1}</p>
-              <p className="text-sm">Total Cards: {deck.length}</p>
+              <p className="text-sm">{t('stats.seen', flippedCards.length)}</p>
+              <p className="text-sm">{t('stats.remaining', deck.length - currentCardIndex - 1)}</p>
+              <p className="text-sm">{t('stats.total', deck.length)}</p>
             </div>
           </div>
         </div>

@@ -2,12 +2,14 @@
 import React, { useRef, useEffect } from 'react';
 import { Card } from '../data/loteriaCards';
 import { ScrollArea } from './ui/scroll-area';
+import { useLanguage } from '../contexts/LanguageContext';
 
 interface CardHistoryProps {
   flippedCards: Card[];
 }
 
 const CardHistory: React.FC<CardHistoryProps> = ({ flippedCards }) => {
+  const { t } = useLanguage();
   const scrollAreaRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -22,14 +24,14 @@ const CardHistory: React.FC<CardHistoryProps> = ({ flippedCards }) => {
   if (flippedCards.length === 0) {
     return (
       <div className="rounded-lg bg-gray-100 p-4 text-center text-gray-500">
-        No cards have been flipped yet.
+        {t('history.empty')}
       </div>
     );
   }
 
   return (
     <div className="space-y-2">
-      <h3 className="font-medium text-gray-900">Card History ({flippedCards.length})</h3>
+      <h3 className="font-medium text-gray-900">{t('history.title', flippedCards.length)}</h3>
       <ScrollArea className="w-full whitespace-nowrap rounded-md border" style={{ height: '120px' }}>
         <div 
           ref={scrollAreaRef} 

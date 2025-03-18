@@ -2,6 +2,7 @@
 import React from 'react';
 import { Volume2, VolumeX } from 'lucide-react';
 import { Switch } from './ui/switch';
+import { useLanguage } from '../contexts/LanguageContext';
 
 interface SoundToggleProps {
   isSoundEnabled: boolean;
@@ -9,6 +10,8 @@ interface SoundToggleProps {
 }
 
 const SoundToggle: React.FC<SoundToggleProps> = ({ isSoundEnabled, toggleSound }) => {
+  const { t } = useLanguage();
+  
   return (
     <div className="flex items-center space-x-2">
       <Switch 
@@ -23,12 +26,12 @@ const SoundToggle: React.FC<SoundToggleProps> = ({ isSoundEnabled, toggleSound }
         {isSoundEnabled ? (
           <>
             <Volume2 className="w-4 h-4 mr-1" />
-            <span>Sound On</span>
+            <span>{t('sound.on')}</span>
           </>
         ) : (
           <>
             <VolumeX className="w-4 h-4 mr-1" />
-            <span>Sound Off</span>
+            <span>{t('sound.off')}</span>
           </>
         )}
       </label>
