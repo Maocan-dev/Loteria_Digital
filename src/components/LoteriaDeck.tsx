@@ -31,7 +31,7 @@ const LoteriaDeck: React.FC<LoteriaDeckProps> = ({ currentCard, remainingCards, 
         </div>
       ) : (
         <div className="w-full max-w-md aspect-[2/3] flex items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50">
-          <p className="text-gray-500">No card flipped yet</p>
+          <p className="text-gray-500">LOTERIA</p>
         </div>
       )}
     </div>
