@@ -78,16 +78,40 @@ const CartasGrid: React.FC<CartasGridProps> = ({ cards, isSoundEnabled }) => {
     });
   };
 
+  const cleanGrid = () => {
+    // Remove all overlays without changing cards
+    const cleanedGrid = gridItems.map(item => ({
+      ...item,
+      overlay: null
+    }));
+    
+    setGridItems(cleanedGrid);
+    
+    toast({
+      title: t('cartas.cleaned') || 'Grid Cleaned',
+      description: t('cartas.cleanedDesc') || 'All beans have been removed',
+      duration: 2000
+    });
+  };
+
   return (
     <div className="space-y-4">
       <div className="flex justify-between items-center">
         <h2 className="text-xl font-bold">{t('cartas.title')}</h2>
-        <button 
-          onClick={resetGrid}
-          className="px-3 py-1 text-sm bg-primary text-white rounded-md hover:bg-primary/90"
-        >
-          {t('cartas.resetButton')}
-        </button>
+        <div className="flex space-x-2">
+          <button 
+            onClick={cleanGrid}
+            className="px-3 py-1 text-sm bg-green-500 text-white rounded-md hover:bg-green-600"
+          >
+            {t('cartas.cleanButton') || 'Clean'}
+          </button>
+          <button 
+            onClick={resetGrid}
+            className="px-3 py-1 text-sm bg-primary text-white rounded-md hover:bg-primary/90"
+          >
+            {t('cartas.resetButton')}
+          </button>
+        </div>
       </div>
       
       <div className="grid grid-cols-4 gap-2">
