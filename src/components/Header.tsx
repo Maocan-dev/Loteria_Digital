@@ -14,7 +14,7 @@ const Header = () => {
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center space-x-2">
         <Link to="/">
-            <img src={logo} alt="Lotería Logo" className="h-16 w-auto" />
+            <img src={logo} alt="Lotería Logo" className="h-20 w-auto" />
           </Link>
         </div>
         
@@ -23,7 +23,7 @@ const Header = () => {
             <li>
               <Link 
                 to="/" 
-                className="text-gray-700 hover:text-primary transition-colors"
+                className="text-white-700 hover:text-primary transition-colors"
               >
                 {t('navigation.home')}
               </Link>
@@ -31,7 +31,7 @@ const Header = () => {
             <li>
               <Link 
                 to="/cartas" 
-                className="text-gray-700 hover:text-primary transition-colors"
+                className="text-white-700 hover:text-primary transition-colors"
               >
                 {t('navigation.cartas')}
               </Link>
