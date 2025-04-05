@@ -14,7 +14,7 @@ const Header = () => {
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center space-x-2">
         <Link to="/">
-            <img src={logo} alt="Lotería Logo" className="h-25 w-auto" />
+            <img src={logo} alt="Lotería Logo" className="h-16 w-auto" />
           </Link>
         </div>
         
