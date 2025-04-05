@@ -12,7 +12,7 @@ const LanguageToggle: React.FC = () => {
 
   return (
     <div className="space-y-2">
-      <label className="text-sm font-medium text-white-700">
+      <label className="text-sm font-medium text-white">
         {t('language.title')}
       </label>
       <ToggleGroup 
