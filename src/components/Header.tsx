@@ -3,6 +3,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import LanguageToggle from './LanguageToggle';
 import { useLanguage } from '../contexts/LanguageContext';
+import logo from '../logo/logo.png';
+
 
 const Header = () => {
   const { t } = useLanguage();
@@ -11,7 +13,9 @@ const Header = () => {
     <header className="bg-loteria-green shadow-sm p-4">
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center space-x-2">
-          <Link to="/" className="text-xxxl font-bold text-primary">Lotx</Link>
+        <Link to="/">
+            <img src={logo} alt="Lotería Logo" className="h-10 w-auto" />
+          </Link>
         </div>
         
         <nav>
