@@ -23,7 +23,7 @@ const Header = () => {
             <li>
               <Link 
                 to="/" 
-                className="text-gray-700 hover:text-primary transition-colors"
+                className="text-white hover:text-primary transition-colors"
               >
                 {t('navigation.home')}
               </Link>
@@ -31,7 +31,7 @@ const Header = () => {
             <li>
               <Link 
                 to="/cartas" 
-                className="text-gray-700 hover:text-primary transition-colors"
+                className="text-white hover:text-primary transition-colors"
               >
                 {t('navigation.cartas')}
               </Link>
