@@ -52,6 +52,7 @@ const translations = {
     'cartas.reset': 'Grid Reset',
     'cartas.resetDesc': 'The grid has been reset with new cards',
     'cartas.resetButton': 'New Grid',
+    'cartas.cleanButton' : 'Clean',
     'footer.copyright': '© 2025 Lotería Flip Fun. All rights reserved.',
   },
   es: {
@@ -97,7 +98,8 @@ const translations = {
     'cartas.revealed': 'Carta Revelada',
     'cartas.reset': 'Tabla Reiniciada',
     'cartas.resetDesc': 'La tabla ha sido reiniciada con nuevas cartas',
-    'cartas.resetButton': 'Nueva Tabla',
+    'cartas.resetButton': 'Nueva Carta',
+    'cartas.cleanButton' : 'Quitar frijolitos',
     'footer.copyright': '© 2025 Lotería Flip Fun. Todos los derechos reservados.',
   }
 };
