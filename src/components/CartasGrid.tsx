@@ -61,12 +61,12 @@ const CartasGrid: React.FC<CartasGridProps> = ({ cards, isSoundEnabled }) => {
       
       setGridItems(updatedGrid);
       
-      // Show toast for bean removed
-      toast({
-        title: t('cartas.beanRemoved'),
-        description: t('cartas.beanRemoved'),
-        duration: 2000
-      });
+      // Show toast for bean removed toast commented
+      //toast({
+        //title: t('cartas.beanRemoved'),
+        //description: t('cartas.beanRemoved'),
+        //duration: 2000
+      //});
     } else {
       // Add new bean if not present
       const randomBeanIndex = Math.floor(Math.random() * beanImages.length);
@@ -79,12 +79,12 @@ const CartasGrid: React.FC<CartasGridProps> = ({ cards, isSoundEnabled }) => {
       
       setGridItems(updatedGrid);
       
-      // Show toast for bean placed
-      toast({
-        title: t('cartas.beanRevealed'),
-        description: t('cartas.beanRevealed'),
-        duration: 2000
-      });
+      // Show toast for bean placed toast commented
+      //toast({
+        //title: t('cartas.beanRevealed'),
+        //description: t('cartas.beanRevealed'),
+        //duration: 2000
+      //});
     }
   };
 
