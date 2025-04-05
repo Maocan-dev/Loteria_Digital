@@ -30,6 +30,12 @@ const Cartas = () => {
         <h1 className="text-3xl font-bold text-center mb-8">{t('cartas.pageTitle')}</h1>
         
         <div className="max-w-4xl mx-auto">
+          <Card className="p-6 mb-4">
+            <div className="text-center mb-4">
+              <p className="text-gray-700">{t('cartas.beanDescription') || 'Click on any card to reveal a special bean pattern!'}</p>
+            </div>
+          </Card>
+
           <Card className="p-6 mb-6">
             <div className="flex justify-end mb-4">
               <SoundToggle isSoundEnabled={isSoundEnabled} toggleSound={toggleSound} />
