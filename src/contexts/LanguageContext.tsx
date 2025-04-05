@@ -53,6 +53,10 @@ const translations = {
     'cartas.resetDesc': 'The grid has been reset with new cards',
     'cartas.resetButton': 'New Card',
     'cartas.cleanButton' : 'Remove Beans',
+    'cartas.cleaned': 'Grid Cleaned',
+    'cartas.cleanedDesc': 'All beans have been removed',
+    'cartas.beanRevealed': 'Bean Placed',
+    'cartas.beanRemoved': 'Bean Removed',
     'footer.copyright': '© 2025 Lotería Flip Fun. All rights reserved.',
   },
   es: {
@@ -100,6 +104,10 @@ const translations = {
     'cartas.resetDesc': 'La tabla ha sido reiniciada con nuevas cartas',
     'cartas.resetButton': 'Nueva Carta',
     'cartas.cleanButton' : 'Quitar frijolitos',
+    'cartas.cleaned': 'Tabla Limpiada',
+    'cartas.cleanedDesc': 'Todos los frijolitos han sido quitados',
+    'cartas.beanRevealed': 'Frijolito Colocado',
+    'cartas.beanRemoved': 'Frijolito Quitado',
     'footer.copyright': '© 2025 Lotería Flip Fun. Todos los derechos reservados.',
   }
 };
@@ -107,7 +115,7 @@ const translations = {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [language, setLanguage] = useState('en');
+  const [language, setLanguage] = useState('es'); // Changed default to Spanish
 
   const t = (key: string): string => {
     return translations[language as keyof typeof translations]?.[key] || key;

@@ -49,25 +49,43 @@ const CartasGrid: React.FC<CartasGridProps> = ({ cards, isSoundEnabled }) => {
   };
 
   const handleCardClick = (index: number) => {
-    // Select a random bean image
-    const randomBeanIndex = Math.floor(Math.random() * beanImages.length);
-    const randomBeanImage = beanImages[randomBeanIndex];
-    
-    // Update the grid with the overlay image
+    // Toggle bean overlay - if already has overlay, remove it
     const updatedGrid = [...gridItems];
-    updatedGrid[index] = {
-      ...updatedGrid[index],
-      overlay: randomBeanImage
-    };
     
-    setGridItems(updatedGrid);
-    
-    // Show toast with bean notification
-    toast({
-      title: t('cartas.revealed'),
-      description: t('cartas.beanRevealed'),
-      duration: 2000
-    });
+    if (updatedGrid[index].overlay) {
+      // Remove bean if already present
+      updatedGrid[index] = {
+        ...updatedGrid[index],
+        overlay: null
+      };
+      
+      setGridItems(updatedGrid);
+      
+      // Show toast for bean removed
+      toast({
+        title: t('cartas.beanRemoved'),
+        description: t('cartas.beanRemoved'),
+        duration: 2000
+      });
+    } else {
+      // Add new bean if not present
+      const randomBeanIndex = Math.floor(Math.random() * beanImages.length);
+      const randomBeanImage = beanImages[randomBeanIndex];
+      
+      updatedGrid[index] = {
+        ...updatedGrid[index],
+        overlay: randomBeanImage
+      };
+      
+      setGridItems(updatedGrid);
+      
+      // Show toast for bean placed
+      toast({
+        title: t('cartas.beanRevealed'),
+        description: t('cartas.beanRevealed'),
+        duration: 2000
+      });
+    }
   };
 
   const resetGrid = () => {
@@ -88,8 +106,8 @@ const CartasGrid: React.FC<CartasGridProps> = ({ cards, isSoundEnabled }) => {
     setGridItems(cleanedGrid);
     
     toast({
-      title: t('cartas.cleaned') || 'Grid Cleaned',
-      description: t('cartas.cleanedDesc') || 'All beans have been removed',
+      title: t('cartas.cleaned'),
+      description: t('cartas.cleanedDesc'),
       duration: 2000
     });
   };

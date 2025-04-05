@@ -22,7 +22,7 @@ const Cartas = () => {
         <div className="max-w-4xl mx-auto">
           <Card className="p-6 mb-4">
             <div className="text-center mb-4">
-              <p className="text-gray-700">{t('cartas.clickInstructions') || 'Click on any card to reveal a bean pattern!'}</p>
+              <p className="text-gray-700">{t('cartas.clickInstructions') || 'Haga clic en cualquier carta para colocar o quitar un frijolito!'}</p>
             </div>
           </Card>
 
