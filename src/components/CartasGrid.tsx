@@ -119,7 +119,7 @@ const CartasGrid: React.FC<CartasGridProps> = ({ cards, isSoundEnabled }) => {
         <div className="flex space-x-2">
           <button 
             onClick={cleanGrid}
-            className="px-3 py-1 text-sm bg-green text-white rounded-md hover:bg-green-600"
+            className="px-3 py-1 text-sm bg-green-800 text-white rounded-md hover:bg-green-600"
           >
             {t('cartas.cleanButton')}
           </button>
