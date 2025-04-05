@@ -115,7 +115,7 @@ const CartasGrid: React.FC<CartasGridProps> = ({ cards, isSoundEnabled }) => {
               <div className="absolute inset-0 flex items-center justify-center bg-black/70 animate-fade-in">
                 <div className="w-3/4 h-3/4 relative">
                   <img 
-                    src={item.overlay}
+                    src={`/images/carta/frijolitos (${item.card.id}).png`}
                     alt="Bean"
                     className="w-full h-full object-contain rounded"
                   />

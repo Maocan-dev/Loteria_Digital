@@ -8,7 +8,7 @@ const Header = () => {
   const { t } = useLanguage();
   
   return (
-    <header className="bg-white shadow-sm p-4">
+    <header className="bg-green shadow-sm p-4">
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center space-x-2">
           <Link to="/" className="text-xl font-bold text-primary">Lotería</Link>
