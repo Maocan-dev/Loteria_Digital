@@ -57,6 +57,7 @@ const translations = {
     'cartas.cleanedDesc': 'All beans have been removed',
     'cartas.beanRevealed': 'Bean Placed',
     'cartas.beanRemoved': 'Bean Removed',
+    'cartas.clickInstructions': 'Select the card that came out from the deck, to put the bean on it',
     'footer.copyright': '© 2025 Lotería Flip Fun. All rights reserved.',
   },
   es: {
@@ -108,6 +109,7 @@ const translations = {
     'cartas.cleanedDesc': 'Todos los frijolitos han sido quitados',
     'cartas.beanRevealed': 'Frijolito Colocado',
     'cartas.beanRemoved': 'Frijolito Quitado',
+    'cartas.clickInstructions': 'Selecciona la carta que salio del mazo, para colocar el frijolito encima',
     'footer.copyright': '© 2025 Lotería Flip Fun. Todos los derechos reservados.',
   }
 };
