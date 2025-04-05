@@ -112,7 +112,7 @@ const CartasGrid: React.FC<CartasGridProps> = ({ cards, isSoundEnabled }) => {
             
             {/* Overlay image (appears when clicked) */}
             {item.overlay && (
-              <div className="absolute inset-0 flex items-center justify-center bg-black/70 animate-fade-in">
+              <div className="absolute inset-0 flex items-center justify-center bg-black/50 animate-fade-in">
                 <div className="w-3/4 h-3/4 relative">
                   <img 
                     src={`/images/carta/frijolitos (${item.card.id}).png`}
