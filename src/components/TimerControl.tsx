@@ -29,7 +29,7 @@ const TimerControl: React.FC<TimerControlProps> = ({
     <div className="space-y-2">
       <div className="flex items-center space-x-2">
         <Clock className="w-4 h-4" />
-        <label className="text-sm text-gray-700">{t('timer.delay', timerDelay)}</label>
+        <label className="text-sm text-gray-700">{t(`timer.delay.${timerDelay}`)}</label>
       </div>
       <Slider
         value={[timerDelay]}

@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useToast } from '../hooks/use-toast';
 import { Button } from './ui/button';
@@ -188,9 +189,9 @@ const LoteriaGame = () => {
           <div className="bg-white rounded-lg shadow-md p-4">
             <h2 className="text-lg font-semibold mb-4">{t('stats.title')}</h2>
             <div className="space-y-2">
-              <p className="text-sm">{t('stats.seen', flippedCards.length)}</p>
-              <p className="text-sm">{t('stats.remaining', deck.length - currentCardIndex - 1)}</p>
-              <p className="text-sm">{t('stats.total', deck.length)}</p>
+              <p className="text-sm">{t('stats.seen') + flippedCards.length}</p>
+              <p className="text-sm">{t('stats.remaining') + (deck.length - currentCardIndex - 1)}</p>
+              <p className="text-sm">{t('stats.total') + deck.length}</p>
             </div>
           </div>
         </div>

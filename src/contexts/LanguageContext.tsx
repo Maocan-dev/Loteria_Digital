@@ -1,147 +1,116 @@
 
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
-// Define available languages
-export type Language = 'en' | 'es';
-
-// Define the context type
 type LanguageContextType = {
-  language: Language;
-  setLanguage: (language: Language) => void;
+  language: string;
+  setLanguage: (lang: string) => void;
   t: (key: string) => string;
 };
 
-// Create the context
-const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
-
-// Translations object
 const translations = {
   en: {
-    // Header
-    'app.title': 'Lotería!',
-    'app.subtitle': 'The most traditional game of Mexico',
-    
-    // Game controls
     'game.play': 'Play',
     'game.pause': 'Pause',
     'game.next': 'Next',
     'game.reset': 'Reset',
     'game.shuffle': 'Shuffle',
-    'game.start': 'Start',
-    
-    // Sound
-    'sound.on': 'Sound On',
-    'sound.off': 'Sound Off',
-    
-    // Timer
-    'timer.delay': 'Timer Delay: {0}s',
+    'settings.title': 'Settings',
+    'stats.title': 'Statistics',
+    'stats.seen': 'Cards seen: ',
+    'stats.remaining': 'Cards remaining: ',
+    'stats.total': 'Total cards: ',
+    'timer.delay.3': 'Card delay: 3 seconds',
+    'timer.delay.4': 'Card delay: 4 seconds',
+    'timer.delay.5': 'Card delay: 5 seconds',
+    'timer.delay.6': 'Card delay: 6 seconds',
+    'timer.delay.7': 'Card delay: 7 seconds',
     'timer.fast': 'Fast',
     'timer.medium': 'Medium',
     'timer.slow': 'Slow',
-    
-    // Card History
-    'history.title': 'Card History ({0})',
-    'history.empty': 'No cards have been flipped yet.',
-    
-    // Game Stats
-    'stats.title': 'Game Stats',
-    'stats.seen': 'Cards Seen: {0}',
-    'stats.remaining': 'Remaining: {0}',
-    'stats.total': 'Total Cards: {0}',
-    
-    // Settings
-    'settings.title': 'Game Settings',
-    
-    // Toasts
-    'toast.endDeck': 'End of Deck',
-    'toast.endDeckDesc': "You've reached the end of the deck.",
-    'toast.gameReset': 'Game Reset',
-    'toast.gameResetDesc': 'The deck has been shuffled and the game has been reset.',
-    'toast.deckShuffled': 'Deck Shuffled',
-    'toast.deckShuffledDesc': 'The deck has been shuffled and the game has been reset.',
-    'toast.soundOff': 'Sound Off',
-    'toast.soundOffDesc': 'Sound has been disabled.',
+    'sound.on': 'Sound On',
+    'sound.off': 'Sound Off',
     'toast.soundOn': 'Sound On',
-    'toast.soundOnDesc': 'Sound has been enabled.',
-    
-    // Language
-    'language.title': 'Language',
+    'toast.soundOff': 'Sound Off',
+    'toast.soundOnDesc': 'Sound effects have been enabled',
+    'toast.soundOffDesc': 'Sound effects have been disabled',
+    'toast.endDeck': 'End of Deck',
+    'toast.endDeckDesc': 'You have reached the end of the deck',
+    'toast.gameReset': 'Game Reset',
+    'toast.gameResetDesc': 'The game has been reset',
+    'toast.deckShuffled': 'Deck Shuffled',
+    'toast.deckShuffledDesc': 'The cards have been shuffled',
+    'history.title': 'Card History',
+    'history.empty': 'No cards have been drawn yet',
     'language.en': 'English',
     'language.es': 'Spanish',
+    'navigation.home': 'Home',
+    'navigation.cartas': 'Cards Grid',
+    'navigation.backToMain': 'Back to Main Game',
+    'cartas.title': 'Lotería Cards Grid',
+    'cartas.pageTitle': 'Lotería Cards Grid',
+    'cartas.revealed': 'Card Revealed',
+    'cartas.reset': 'Grid Reset',
+    'cartas.resetDesc': 'The grid has been reset with new cards',
+    'cartas.resetButton': 'New Grid',
+    'footer.copyright': '© 2025 Lotería Flip Fun. All rights reserved.',
   },
   es: {
-    // Header
-    'app.title': '¡Lotería!',
-    'app.subtitle': 'El juego más tradicional de México',
-    
-    // Game controls
     'game.play': 'Jugar',
     'game.pause': 'Pausar',
     'game.next': 'Siguiente',
     'game.reset': 'Reiniciar',
     'game.shuffle': 'Barajar',
-    'game.start': 'Comenzar',
-    
-    // Sound
-    'sound.on': 'Sonido Activado',
-    'sound.off': 'Sonido Desactivado',
-    
-    // Timer
-    'timer.delay': 'Tiempo de Retraso: {0}s',
+    'settings.title': 'Ajustes',
+    'stats.title': 'Estadísticas',
+    'stats.seen': 'Cartas vistas: ',
+    'stats.remaining': 'Cartas restantes: ',
+    'stats.total': 'Total de cartas: ',
+    'timer.delay.3': 'Retraso: 3 segundos',
+    'timer.delay.4': 'Retraso: 4 segundos',
+    'timer.delay.5': 'Retraso: 5 segundos',
+    'timer.delay.6': 'Retraso: 6 segundos',
+    'timer.delay.7': 'Retraso: 7 segundos',
     'timer.fast': 'Rápido',
     'timer.medium': 'Medio',
     'timer.slow': 'Lento',
-    
-    // Card History
-    'history.title': 'Historial de Cartas ({0})',
-    'history.empty': 'Aún no se han volteado cartas.',
-    
-    // Game Stats
-    'stats.title': 'Estadísticas del Juego',
-    'stats.seen': 'Cartas Vistas: {0}',
-    'stats.remaining': 'Restantes: {0}',
-    'stats.total': 'Total de Cartas: {0}',
-    
-    // Settings
-    'settings.title': 'Configuración del Juego',
-    
-    // Toasts
-    'toast.endDeck': 'Fin del Mazo',
-    'toast.endDeckDesc': 'Has llegado al final del mazo.',
-    'toast.gameReset': 'Juego Reiniciado',
-    'toast.gameResetDesc': 'El mazo ha sido barajado y el juego se ha reiniciado.',
-    'toast.deckShuffled': 'Mazo Barajado',
-    'toast.deckShuffledDesc': 'El mazo ha sido barajado y el juego se ha reiniciado.',
-    'toast.soundOff': 'Sonido Desactivado',
-    'toast.soundOffDesc': 'El sonido ha sido desactivado.',
+    'sound.on': 'Sonido Activado',
+    'sound.off': 'Sonido Desactivado',
     'toast.soundOn': 'Sonido Activado',
-    'toast.soundOnDesc': 'El sonido ha sido activado.',
-    
-    // Language
-    'language.title': 'Idioma',
+    'toast.soundOff': 'Sonido Desactivado',
+    'toast.soundOnDesc': 'Los efectos de sonido han sido activados',
+    'toast.soundOffDesc': 'Los efectos de sonido han sido desactivados',
+    'toast.endDeck': 'Fin del Mazo',
+    'toast.endDeckDesc': 'Has llegado al final del mazo',
+    'toast.gameReset': 'Juego Reiniciado',
+    'toast.gameResetDesc': 'El juego ha sido reiniciado',
+    'toast.deckShuffled': 'Mazo Barajado',
+    'toast.deckShuffledDesc': 'Las cartas han sido barajadas',
+    'history.title': 'Historial de Cartas',
+    'history.empty': 'Aún no se han sacado cartas',
     'language.en': 'Inglés',
     'language.es': 'Español',
+    'navigation.home': 'Inicio',
+    'navigation.cartas': 'Tabla de Cartas',
+    'navigation.backToMain': 'Volver al Juego Principal',
+    'cartas.title': 'Tabla de Cartas de Lotería',
+    'cartas.pageTitle': 'Tabla de Cartas de Lotería',
+    'cartas.revealed': 'Carta Revelada',
+    'cartas.reset': 'Tabla Reiniciada',
+    'cartas.resetDesc': 'La tabla ha sido reiniciada con nuevas cartas',
+    'cartas.resetButton': 'Nueva Tabla',
+    'footer.copyright': '© 2025 Lotería Flip Fun. Todos los derechos reservados.',
   }
 };
 
-// Provider component
+const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
+
 export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [language, setLanguage] = useState<Language>('en');
-  
-  // Translation function
-  const t = (key: string, ...args: any[]): string => {
-    const translation = translations[language][key] || key;
-    
-    // Replace placeholders with arguments
-    if (args.length) {
-      return args.reduce((str, arg, index) => {
-        return str.replace(`{${index}}`, arg);
-      }, translation);
-    }
-    
-    return translation;
+  const [language, setLanguage] = useState('en');
+
+  const t = (key: string): string => {
+    return translations[language as keyof typeof translations]?.[key] || key;
   };
-  
+
   return (
     <LanguageContext.Provider value={{ language, setLanguage, t }}>
       {children}
@@ -149,7 +118,6 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
   );
 };
 
-// Hook for using the language context
 export const useLanguage = (): LanguageContextType => {
   const context = useContext(LanguageContext);
   if (context === undefined) {
