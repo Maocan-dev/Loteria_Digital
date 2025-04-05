@@ -20,7 +20,7 @@ class SoundPlayer {
     
     try {
       this.audio?.pause();
-      this.audio = new Audio(`/sound/extendend/${cardId}.mp3`);
+      this.audio = new Audio(`/sound/short/${cardId}.mp3`);
       this.audio.play().catch(error => {
         console.error("Failed to play sound:", error);
       });
