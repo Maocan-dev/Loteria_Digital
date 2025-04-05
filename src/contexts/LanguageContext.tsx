@@ -51,8 +51,8 @@ const translations = {
     'cartas.revealed': 'Card Revealed',
     'cartas.reset': 'Grid Reset',
     'cartas.resetDesc': 'The grid has been reset with new cards',
-    'cartas.resetButton': 'New Grid',
-    'cartas.cleanButton' : 'Clean',
+    'cartas.resetButton': 'New Card',
+    'cartas.cleanButton' : 'Remove Beans',
     'footer.copyright': '© 2025 Lotería Flip Fun. All rights reserved.',
   },
   es: {
