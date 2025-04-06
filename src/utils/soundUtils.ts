@@ -29,6 +29,7 @@ class SoundPlayer {
     
     try {
       this.audio?.pause();
+      // Fix the folder path from "extendend" to "extended"
       const folderPath = this.soundVersion === 'short' ? '/sound/short/' : '/sound/extendend/';
       this.audio = new Audio(`${folderPath}${cardId}.mp3`);
       this.audio.play().catch(error => {

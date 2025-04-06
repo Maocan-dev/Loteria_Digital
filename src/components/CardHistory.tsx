@@ -33,9 +33,8 @@ const CardHistory: React.FC<CardHistoryProps> = ({ flippedCards }) => {
     <div className="space-y-2">
       <h3 className="font-medium text-gray-900">{t('history.title')}: {flippedCards.length}</h3>
       <ScrollArea 
-        className="w-full whitespace-nowrap rounded-md border" 
+        className="w-full whitespace-nowrap rounded-md border overflow-hidden" 
         style={{ height: '120px' }}
-        scrollbars="horizontal"
       >
         <div 
           ref={scrollAreaRef} 
