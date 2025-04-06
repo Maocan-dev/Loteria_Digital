@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useToast } from '../hooks/use-toast';
 import { Button } from './ui/button';
@@ -8,6 +7,7 @@ import { Card } from '../data/loteriaCards';
 import loteriaCards from '../data/loteriaCards';
 import { shuffleDeck } from '../utils/deckUtils';
 import SoundToggle from './SoundToggle';
+import SoundVersionToggle from './SoundVersionToggle';
 import TimerControl from './TimerControl';
 import CardHistory from './CardHistory';
 import soundPlayer from '../utils/soundUtils';
@@ -20,6 +20,7 @@ const LoteriaGame = () => {
   const [currentCardIndex, setCurrentCardIndex] = useState(-1);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isSoundEnabled, setIsSoundEnabled] = useState(true);
+  const [soundVersion, setSoundVersion] = useState<'short' | 'extended'>('short');
   const [timerDelay, setTimerDelay] = useState(3);
   const [flippedCards, setFlippedCards] = useState<Card[]>([]);
   const timerRef = useRef<number | null>(null);
@@ -27,6 +28,7 @@ const LoteriaGame = () => {
   useEffect(() => {
     initializeDeck();
     soundPlayer.setEnabled(isSoundEnabled);
+    soundPlayer.setSoundVersion(soundVersion);
   }, []);
 
   useEffect(() => {
@@ -34,10 +36,16 @@ const LoteriaGame = () => {
   }, [isSoundEnabled]);
 
   useEffect(() => {
+    soundPlayer.setSoundVersion(soundVersion);
+  }, [soundVersion]);
+
+  useEffect(() => {
     if (isPlaying) {
+      const effectiveDelay = soundVersion === 'extended' ? Math.max(timerDelay, 5) : timerDelay;
+      
       timerRef.current = window.setTimeout(() => {
         nextCard();
-      }, timerDelay * 1000);
+      }, effectiveDelay * 1000);
     }
     
     return () => {
@@ -46,7 +54,7 @@ const LoteriaGame = () => {
         timerRef.current = null;
       }
     };
-  }, [isPlaying, currentCardIndex, timerDelay]);
+  }, [isPlaying, currentCardIndex, timerDelay, soundVersion]);
 
   const initializeDeck = useCallback(() => {
     const shuffledDeck = shuffleDeck([...loteriaCards]);
@@ -113,6 +121,10 @@ const LoteriaGame = () => {
     ? deck[currentCardIndex]
     : null;
 
+  const getEffectiveTimerDelay = () => {
+    return soundVersion === 'extended' ? Math.max(timerDelay, 5) : timerDelay;
+  };
+
   return (
     <div className="mx-auto max-w-4xl p-4">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -178,7 +190,16 @@ const LoteriaGame = () => {
               <TimerControl 
                 timerDelay={timerDelay}
                 setTimerDelay={setTimerDelay}
+                min={soundVersion === 'extended' ? 5 : 2}
+                max={soundVersion === 'extended' ? 8 : 5}
               />
+              
+              <div className="pt-4 border-t">
+                <SoundVersionToggle 
+                  soundVersion={soundVersion}
+                  setSoundVersion={setSoundVersion}
+                />
+              </div>
               
               <div className="pt-4 border-t">
                 <SoundToggle isSoundEnabled={isSoundEnabled} toggleSound={toggleSound} />
@@ -192,6 +213,9 @@ const LoteriaGame = () => {
               <p className="text-sm">{t('stats.seen') + flippedCards.length}</p>
               <p className="text-sm">{t('stats.remaining') + (deck.length - currentCardIndex - 1)}</p>
               <p className="text-sm">{t('stats.total') + deck.length}</p>
+              {soundVersion === 'extended' && (
+                <p className="text-sm text-amber-600">{t('stats.minDelay')}: 5s</p>
+              )}
             </div>
           </div>
         </div>

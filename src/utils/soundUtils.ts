@@ -2,6 +2,7 @@
 class SoundPlayer {
   private audio: HTMLAudioElement | null = null;
   private isSoundEnabled: boolean = true;
+  private soundVersion: 'short' | 'extended' = 'short';
 
   constructor() {
     this.audio = new Audio();
@@ -15,12 +16,21 @@ class SoundPlayer {
     return this.isSoundEnabled;
   }
 
+  setSoundVersion(version: 'short' | 'extended'): void {
+    this.soundVersion = version;
+  }
+
+  getSoundVersion(): 'short' | 'extended' {
+    return this.soundVersion;
+  }
+
   playCardSound(cardId: number): void {
     if (!this.isSoundEnabled) return;
     
     try {
       this.audio?.pause();
-      this.audio = new Audio(`/sound/short/${cardId}.mp3`);
+      const folderPath = this.soundVersion === 'short' ? '/sound/short/' : '/sound/extendend/';
+      this.audio = new Audio(`${folderPath}${cardId}.mp3`);
       this.audio.play().catch(error => {
         console.error("Failed to play sound:", error);
       });
