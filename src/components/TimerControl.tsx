@@ -25,12 +25,19 @@ const TimerControl: React.FC<TimerControlProps> = ({
   
   // Calculate effective min/max based on soundVersion
   const min = soundVersion === 'extended' ? 5 : propMin;
-  const max = soundVersion === 'extended' ? 8 : propMax;
+  const max = soundVersion === 'extended' ? 8 : propMax;  
   
   // Adjust the timer delay when soundVersion changes
   useEffect(() => {
     if (soundVersion === 'extended' && timerDelay < 5) {
       setTimerDelay(5);
+    }
+  }, [soundVersion, timerDelay, setTimerDelay]);
+
+  // cuando la version es corta y el timer es mayor que 5, timer baja a 3
+  useEffect(() => {
+    if (soundVersion === 'short' && timerDelay < 3) {
+      setTimerDelay(3);
     }
   }, [soundVersion, timerDelay, setTimerDelay]);
 
