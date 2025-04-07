@@ -70,9 +70,9 @@ const translations = {
   es: {
     'game.play': 'Jugar',
     'game.pause': 'Pausar',
-    'game.next': 'Siguiente',
-    'game.reset': 'Reiniciar',
-    'game.shuffle': 'Barajar',
+    'game.next': 'Proxima',
+    'game.reset': 'Reanudar',
+    'game.shuffle': 'Mezclar',
     'settings.title': 'Ajustes',
     'stats.title': 'Estadísticas',
     'stats.seen': 'Cartas vistas: ',
