@@ -1,10 +1,10 @@
 
 import React from 'react';
 import { Headphones } from 'lucide-react';
-import { RadioGroup, RadioGroupItem } from './ui/radio-group';
-import { Label } from './ui/label';
+import { RadioGroup } from './ui/radio-group';
 import { useLanguage } from '../contexts/LanguageContext';
 import soundPlayer from '../utils/soundUtils';
+import RadioOption from './RadioOption';
 
 interface SoundVersionToggleProps {
   soundVersion: 'short' | 'extended';
@@ -34,15 +34,17 @@ const SoundVersionToggle: React.FC<SoundVersionToggleProps> = ({
         onValueChange={(val: 'short' | 'extended') => handleVersionChange(val)}
         className="flex flex-col space-y-2"
       >
-        <div className="flex items-center space-x-2">
-          <RadioGroupItem value="short" id="sound-short" />
-          <Label htmlFor="sound-short">{t('sound.short')}</Label>
-        </div>
+        <RadioOption 
+          id="sound-short" 
+          value="short" 
+          label={t('sound.short')} 
+        />
         
-        <div className="flex items-center space-x-2">
-          <RadioGroupItem value="extended" id="sound-extended" />
-          <Label htmlFor="sound-extended">{t('sound.extended')}</Label>
-        </div>
+        <RadioOption 
+          id="sound-extended" 
+          value="extended" 
+          label={t('sound.extended')} 
+        />
       </RadioGroup>
 
       {soundVersion === 'extended' && (
@@ -53,4 +55,3 @@ const SoundVersionToggle: React.FC<SoundVersionToggleProps> = ({
 };
 
 export default SoundVersionToggle;
-
