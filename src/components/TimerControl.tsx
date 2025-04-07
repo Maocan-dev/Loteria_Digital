@@ -29,17 +29,14 @@ const TimerControl: React.FC<TimerControlProps> = ({
   
   // Adjust the timer delay when soundVersion changes
   useEffect(() => {
-    if (soundVersion === 'extended' && timerDelay < 5) {
+    if (soundVersion === 'short') {
+      setTimerDelay(3);
+    } else if (soundVersion === 'extended' && timerDelay < 5) {
       setTimerDelay(5);
     }
-  }, [soundVersion, timerDelay, setTimerDelay]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [soundVersion]);
 
-  // cuando la version es corta y el timer es mayor que 5, timer baja a 3
-  useEffect(() => {
-    if (soundVersion === 'short' && timerDelay > 3) {
-      setTimerDelay(3);
-    }
-  }, [soundVersion, timerDelay, setTimerDelay]);
 
   const handleChange = (value: number[]) => {
     setTimerDelay(value[0]);
