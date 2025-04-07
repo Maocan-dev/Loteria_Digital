@@ -3,32 +3,35 @@ import { useState, useRef, useCallback, useEffect } from 'react';
 import { Card } from '../data/loteriaCards';
 import loteriaCards from '../data/loteriaCards';
 import { shuffleDeck } from '../utils/deckUtils';
+import soundPlayer from '../utils/soundUtils';
 import { useToast } from './use-toast';
 import { useLanguage } from '../contexts/LanguageContext';
-import { useSound } from './useSound';
 
 export const useLoteriaGame = () => {
   const { toast } = useToast();
   const { t } = useLanguage();
-  const { 
-    isSoundEnabled, 
-    soundVersion, 
-    setSoundVersion, 
-    playCardSound, 
-    stopSound, 
-    toggleSound 
-  } = useSound();
-  
   const [deck, setDeck] = useState<Card[]>([]);
   const [currentCardIndex, setCurrentCardIndex] = useState(-1);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isSoundEnabled, setIsSoundEnabled] = useState(true);
+  const [soundVersion, setSoundVersion] = useState<'short' | 'extended'>('short');
   const [timerDelay, setTimerDelay] = useState(3);
   const [flippedCards, setFlippedCards] = useState<Card[]>([]);
   const timerRef = useRef<number | null>(null);
 
   useEffect(() => {
     initializeDeck();
+    soundPlayer.setEnabled(isSoundEnabled);
+    soundPlayer.setSoundVersion(soundVersion);
   }, []);
+
+  useEffect(() => {
+    soundPlayer.setEnabled(isSoundEnabled);
+  }, [isSoundEnabled]);
+
+  useEffect(() => {
+    soundPlayer.setSoundVersion(soundVersion);
+  }, [soundVersion]);
 
   useEffect(() => {
     if (isPlaying) {
@@ -51,8 +54,8 @@ export const useLoteriaGame = () => {
     setCurrentCardIndex(-1);
     setFlippedCards([]);
     setIsPlaying(false);
-    stopSound();
-  }, [stopSound]);
+    soundPlayer.stop();
+  }, []);
 
   const togglePlay = useCallback(() => {
     if (currentCardIndex === -1) {
@@ -78,9 +81,9 @@ export const useLoteriaGame = () => {
     setFlippedCards(prev => [...prev, newCard]);
     
     if (newCard) {
-      playCardSound(newCard.id);
+      soundPlayer.playCardSound(newCard.id);
     }
-  }, [currentCardIndex, deck, toast, t, playCardSound]);
+  }, [currentCardIndex, deck, toast, t]);
 
   const resetGame = useCallback(() => {
     initializeDeck();
@@ -98,13 +101,13 @@ export const useLoteriaGame = () => {
     });
   }, [initializeDeck, toast, t]);
 
-  const soundToggleWithToast = useCallback(() => {
-    toggleSound();
+  const toggleSound = useCallback(() => {
+    setIsSoundEnabled(prev => !prev);
     toast({
       title: isSoundEnabled ? t('toast.soundOff') : t('toast.soundOn'),
       description: isSoundEnabled ? t('toast.soundOffDesc') : t('toast.soundOnDesc'),
     });
-  }, [isSoundEnabled, toggleSound, toast, t]);
+  }, [isSoundEnabled, toast, t]);
 
   const currentCard = currentCardIndex >= 0 && currentCardIndex < deck.length
     ? deck[currentCardIndex]
@@ -128,7 +131,7 @@ export const useLoteriaGame = () => {
     nextCard,
     resetGame,
     shuffleAndReset,
-    toggleSound: soundToggleWithToast,
+    toggleSound,
     setTimerDelay,
     setSoundVersion
   };

@@ -29,15 +29,8 @@ class SoundPlayer {
     
     try {
       this.audio?.pause();
-      // Fix the path to use "extended" instead of "extendend"
       const folderPath = this.soundVersion === 'short' ? '/sound/short/' : '/sound/extended/';
       this.audio = new Audio(`${folderPath}${cardId}.mp3`);
-      
-      // Add error handling for sound loading
-      this.audio.addEventListener('error', (e) => {
-        console.error("Audio loading error:", e);
-      });
-      
       this.audio.play().catch(error => {
         console.error("Failed to play sound:", error);
       });
