@@ -2,7 +2,7 @@
 import React from 'react';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { Progress } from '../ui/progress';
-import { Card, CheckCircle2, Clock } from 'lucide-react';
+import { LayoutCards, CheckCircle2, Clock } from 'lucide-react';
 
 interface GameStatsProps {
   flippedCardsCount: number;
@@ -47,7 +47,7 @@ const GameStats: React.FC<GameStatsProps> = ({
         
         {/* Total cards */}
         <div className="flex items-center">
-          <Card className="w-5 h-5 text-blue-500 mr-2" />
+          <LayoutCards className="w-5 h-5 text-blue-500 mr-2" />
           <p className="text-sm">{t('stats.total')} <span className="font-medium">{totalCards}</span></p>
         </div>
       </div>
