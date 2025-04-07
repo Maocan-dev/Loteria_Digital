@@ -34,7 +34,7 @@ const TimerControl: React.FC<TimerControlProps> = ({
     } else if (soundVersion === 'extended' && timerDelay < 5) {
       setTimerDelay(5);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    
   }, [soundVersion]);
 
 
