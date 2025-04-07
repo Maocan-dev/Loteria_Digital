@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Headphones } from 'lucide-react';
+import { Megaphone } from 'lucide-react';
 import { RadioGroup } from './ui/radio-group';
 import { useLanguage } from '../contexts/LanguageContext';
 import soundPlayer from '../utils/soundUtils';
@@ -25,7 +25,7 @@ const SoundVersionToggle: React.FC<SoundVersionToggleProps> = ({
   return (
     <div className="space-y-3">
       <div className="flex items-center space-x-2">
-        <Headphones className="w-4 h-4" />
+        <Megaphone className="w-4 h-4" />
         <span className="text-sm font-medium">{t('sound.version')}</span>
       </div>
       
