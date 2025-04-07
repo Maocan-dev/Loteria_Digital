@@ -41,11 +41,9 @@ const LoteriaGame = () => {
 
   useEffect(() => {
     if (isPlaying) {
-      const effectiveDelay = soundVersion === 'extended' ? Math.max(timerDelay, 5) : timerDelay;
-      
       timerRef.current = window.setTimeout(() => {
         nextCard();
-      }, effectiveDelay * 1000);
+      }, timerDelay * 1000);
     }
     
     return () => {
@@ -121,10 +119,6 @@ const LoteriaGame = () => {
     ? deck[currentCardIndex]
     : null;
 
-  const getEffectiveTimerDelay = () => {
-    return soundVersion === 'extended' ? Math.max(timerDelay, 5) : timerDelay;
-  };
-
   return (
     <div className="mx-auto max-w-4xl p-4">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -190,8 +184,7 @@ const LoteriaGame = () => {
               <TimerControl 
                 timerDelay={timerDelay}
                 setTimerDelay={setTimerDelay}
-                min={soundVersion === 'extended' ? 5 : 2}
-                max={soundVersion === 'extended' ? 8 : 5}
+                soundVersion={soundVersion}
               />                       
               
               <div className="pt-4 border-t">

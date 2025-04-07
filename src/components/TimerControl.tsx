@@ -1,4 +1,5 @@
-import React from 'react';
+
+import React, { useEffect } from 'react';
 import { Clock } from 'lucide-react';
 import { Slider } from './ui/slider';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -6,6 +7,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 interface TimerControlProps {
   timerDelay: number;
   setTimerDelay: (value: number) => void;
+  soundVersion: 'short' | 'extended';
   min?: number;
   max?: number;
   step?: number;
@@ -13,13 +15,25 @@ interface TimerControlProps {
 
 const TimerControl: React.FC<TimerControlProps> = ({ 
   timerDelay, 
-  setTimerDelay, 
-  min = 2, 
-  max = 8, 
+  setTimerDelay,
+  soundVersion,
+  min: propMin = 2, 
+  max: propMax = 8, 
   step = 1 
 }) => {
   const { t } = useLanguage();
   
+  // Calculate effective min/max based on soundVersion
+  const min = soundVersion === 'extended' ? 5 : propMin;
+  const max = soundVersion === 'extended' ? 8 : propMax;
+  
+  // Adjust the timer delay when soundVersion changes
+  useEffect(() => {
+    if (soundVersion === 'extended' && timerDelay < 5) {
+      setTimerDelay(5);
+    }
+  }, [soundVersion, timerDelay, setTimerDelay]);
+
   const handleChange = (value: number[]) => {
     setTimerDelay(value[0]);
   }; 
@@ -43,6 +57,10 @@ const TimerControl: React.FC<TimerControlProps> = ({
         <span>{t('timer.medium')}</span>
         <span>{t('timer.slow')}</span>
       </div>
+      
+      {soundVersion === 'extended' && (
+        <p className="text-sm text-amber-600 mt-2">{t('stats.minDelay')}: 5s</p>
+      )}
     </div>
   );
 };
