@@ -193,6 +193,12 @@ const LoteriaGame = () => {
                 min={soundVersion === 'extended' ? 5 : 2}
                 max={soundVersion === 'extended' ? 8 : 5}
               />
+            <div    
+              {soundVersion === 'extended' && (
+                <p className="text-sm text-amber-600">{t('stats.minDelay')}: 5s</p>
+              )}
+              />
+              </div>
               
               <div className="pt-4 border-t">
                 <SoundVersionToggle 
@@ -213,9 +219,7 @@ const LoteriaGame = () => {
               <p className="text-sm">{t('stats.seen') + flippedCards.length}</p>
               <p className="text-sm">{t('stats.remaining') + (deck.length - currentCardIndex - 1)}</p>
               <p className="text-sm">{t('stats.total') + deck.length}</p>
-              {soundVersion === 'extended' && (
-                <p className="text-sm text-amber-600">{t('stats.minDelay')}: 5s</p>
-              )}
+              
             </div>
           </div>
         </div>
