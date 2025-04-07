@@ -22,11 +22,7 @@ const TimerControl: React.FC<TimerControlProps> = ({
   
   const handleChange = (value: number[]) => {
     setTimerDelay(value[0]);
-  };
-
-  {soundVersion === 'extended' && (
-    <p className="text-sm text-amber-600 mt-2">{t('stats.minDelay')}: 5s</p>
-  )}
+  }; 
 
   return (
     <div className="space-y-2">
