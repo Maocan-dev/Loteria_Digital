@@ -44,8 +44,13 @@ const SoundVersionToggle: React.FC<SoundVersionToggleProps> = ({
           <Label htmlFor="sound-extended">{t('sound.extended')}</Label>
         </div>
       </RadioGroup>
+
+      {soundVersion === 'extended' && (
+        <p className="text-sm text-amber-600 mt-2">{t('stats.minDelay')}: 5s</p>
+      )}
     </div>
   );
 };
 
 export default SoundVersionToggle;
+
