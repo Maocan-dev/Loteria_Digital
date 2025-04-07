@@ -36,7 +36,7 @@ const TimerControl: React.FC<TimerControlProps> = ({
 
   // cuando la version es corta y el timer es mayor que 5, timer baja a 3
   useEffect(() => {
-    if (soundVersion === 'short' && timerDelay < 3) {
+    if (soundVersion === 'short' && timerDelay > 3) {
       setTimerDelay(3);
     }
   }, [soundVersion, timerDelay, setTimerDelay]);
