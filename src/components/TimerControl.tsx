@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Clock } from 'lucide-react';
 import { Slider } from './ui/slider';
@@ -16,7 +15,7 @@ const TimerControl: React.FC<TimerControlProps> = ({
   timerDelay, 
   setTimerDelay, 
   min = 2, 
-  max = 5, 
+  max = 8, 
   step = 1 
 }) => {
   const { t } = useLanguage();
@@ -24,6 +23,10 @@ const TimerControl: React.FC<TimerControlProps> = ({
   const handleChange = (value: number[]) => {
     setTimerDelay(value[0]);
   };
+
+  {soundVersion === 'extended' && (
+    <p className="text-sm text-amber-600 mt-2">{t('stats.minDelay')}: 5s</p>
+  )}
 
   return (
     <div className="space-y-2">
