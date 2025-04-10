@@ -2,7 +2,7 @@
 import React from 'react';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { Progress } from '../ui/progress';
-import { BarChart, Eye, Cards, Hash } from 'lucide-react';
+import { BarChart, Eye, Hash } from 'lucide-react';
 
 interface GameStatsProps {
   flippedCardsCount: number;
@@ -41,7 +41,7 @@ const GameStats: React.FC<GameStatsProps> = ({
           
           <div className="flex items-center justify-between">
             <div className="flex items-center">
-              <Cards className="w-4 h-4 mr-2 text-amber-500" />
+              <BarChart className="w-4 h-4 mr-2 text-amber-500" />
               <span className="text-sm">{t('stats.remaining')}</span>
             </div>
             <span className="font-medium">{remainingCards}</span>
