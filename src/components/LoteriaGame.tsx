@@ -5,6 +5,7 @@ import CardHistory from './CardHistory';
 import GameControls from './game/GameControls';
 import GameSettings from './game/GameSettings';
 import GameStats from './game/GameStats';
+import DealerPlayerSection from './DealerPlayerSection';
 import { useLoteriaGame } from '../hooks/useLoteriaGame';
 
 const LoteriaGame = () => {
@@ -28,7 +29,7 @@ const LoteriaGame = () => {
 
   return (
     <div className="mx-auto max-w-4xl p-4">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
         <div className="md:col-span-2 space-y-6">
           <GameControls 
             isPlaying={isPlaying}
@@ -68,6 +69,19 @@ const LoteriaGame = () => {
           />
         </div>
       </div>
+
+      {/* New DealerPlayerSection */}
+      <DealerPlayerSection 
+        flippedCards={flippedCards}
+        isPlaying={isPlaying}
+        togglePlay={togglePlay}
+        nextCard={nextCard}
+        shuffleAndReset={shuffleAndReset}
+        isSoundEnabled={isSoundEnabled}
+        toggleSound={toggleSound}
+        isLastCard={isLastCard}
+        cards={deck}
+      />
     </div>
   );
 };
