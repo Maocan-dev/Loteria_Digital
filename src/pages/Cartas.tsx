@@ -8,40 +8,56 @@ import { Card } from '@/components/ui/card';
 import loteriaCards from '../data/loteriaCards';
 import { useToast } from '@/hooks/use-toast';
 import { useLanguage } from '../contexts/LanguageContext';
+import { useBackground } from '../contexts/BackgroundContext';
+import BackgroundToggleButton from '../components/BackgroundToggleButton';
 
 const Cartas = () => {
   const { toast } = useToast();
   const { t } = useLanguage();
+  const { backgroundImage } = useBackground();
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50">
-      <Header />
-      <main className="flex-1 container mx-auto py-8 px-4">
-        <h1 className="text-3xl font-bold text-center mb-8">{t('cartas.pageTitle')}</h1>
-        
-        <div className="max-w-4xl mx-auto">
-          <Card className="p-6 mb-4">
-            <div className="text-center mb-4">
-              <p className="text-gray-700">{t('cartas.clickInstructions') || 'Haga clic en cualquier carta para colocar o quitar un frijolito!'}</p>
-            </div>
-          </Card>
-
-          <Card className="p-6 mb-6">
-            <CartasGrid cards={loteriaCards} isSoundEnabled={false} />
-          </Card>
-          
-          <div className="text-center">
-            <Button 
-              variant="outline" 
-              onClick={() => window.location.href = '/'}
-              className="mt-4"
-            >
-              {t('navigation.backToMain')}
-            </Button>
+    <div 
+      className="min-h-screen flex flex-col"
+      style={{
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed'
+      }}
+    >
+      <div className="bg-black/30 min-h-screen flex flex-col">
+        <Header />
+        <main className="flex-1 container mx-auto py-8 px-4">
+          <div className="flex flex-col items-center mb-6">
+            <h1 className="text-3xl font-bold text-center mb-4 text-white">{t('cartas.pageTitle')}</h1>
+            <BackgroundToggleButton />
           </div>
-        </div>
-      </main>
-      <Footer />
+          
+          <div className="max-w-4xl mx-auto backdrop-blur-sm bg-white/80 rounded-lg p-4">
+            <Card className="p-6 mb-4">
+              <div className="text-center mb-4">
+                <p className="text-gray-700">{t('cartas.clickInstructions') || 'Haga clic en cualquier carta para colocar o quitar un frijolito!'}</p>
+              </div>
+            </Card>
+
+            <Card className="p-6 mb-6">
+              <CartasGrid cards={loteriaCards} isSoundEnabled={false} />
+            </Card>
+            
+            <div className="text-center">
+              <Button 
+                variant="outline" 
+                onClick={() => window.location.href = '/'}
+                className="mt-4"
+              >
+                {t('navigation.backToMain')}
+              </Button>
+            </div>
+          </div>
+        </main>
+        <Footer />
+      </div>
     </div>
   );
 };
