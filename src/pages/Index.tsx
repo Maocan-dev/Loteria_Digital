@@ -27,10 +27,10 @@ const Index = () => {
           </div>
           <div className="backdrop-blur-sm bg-white/20 rounded-lg p-4">
             <LoteriaGame />
-          </div>
-          <div className="flex flex-col items-center mb-6">           
+            <div className="flex flex-col items-center mb-6">           
             <BackgroundToggleButton />
           </div>
+          </div>          
         </main>
         <Footer />
       </div>
