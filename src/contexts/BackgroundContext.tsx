@@ -28,9 +28,9 @@ export const BackgroundProvider: React.FC<BackgroundProviderProps> = ({ children
   useEffect(() => {
     // Start with our known background images
     const initialImages = [
-      '/fondo/7545661.jpg',
-      '/fondo/7897802.jpg',
-      '/fondo/9438729.jpg'
+      '/fondo/1.jpg',
+      '/fondo/72.jpg',
+      '/fondo/3.jpg'
     ];
     
     setBackgroundImages(initialImages);
