@@ -46,8 +46,7 @@ const Cartas = () => {
               <Button 
                 variant="outline" 
                 onClick={() => window.location.href = '/'}
-                className="mt-4"
-              >
+                className="mt-4">
                 {t('navigation.backToMain')}
               </Button>              
             </div>
@@ -55,7 +54,7 @@ const Cartas = () => {
               <div className="text-center">  
               <BackgroundToggleButton />
               </div> 
-              
+
           </div>          
         </main>
         <Footer />
