@@ -16,7 +16,7 @@ const DealerPlayerSection: React.FC<DealerPlayerSectionProps> = ({
   isSoundEnabled
 }) => {
   return (
-    <Card className="mb-6 bg-white/60 border-0 shadow-none">
+    <Card className="mb-6 bg-white border-2 shadow-none">
       <CardContent className="p-0">
         <CartasGrid cards={cards} isSoundEnabled={isSoundEnabled} />
       </CardContent>
