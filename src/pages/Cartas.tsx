@@ -51,12 +51,9 @@ const Cartas = () => {
                 {t('navigation.backToMain')}
               </Button>              
             </div>
-            <div className="text-center">  
-            <BackgroundToggleButton />
-            </div>  
-                      
-           
-          
+              <div className="text-center">  
+              <BackgroundToggleButton />
+              </div> 
           </div>          
         </main>
         <Footer />
