@@ -30,7 +30,7 @@ const GameControls: React.FC<GameControlsProps> = ({
   
   return (
     <div className="flex flex-col space-y-4 w-full">
-      <div className={`grid ${isMobile ? 'grid-cols-2' : 'grid-cols-3'} gap-2 w-full`}>
+      <div className={`grid ${isMobile ? 'grid-cols-1' : 'grid-cols-3'} gap-2 w-full`}>
         <Button 
           variant="outline" 
           size={isMobile ? "sm" : "default"}
