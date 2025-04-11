@@ -20,7 +20,6 @@ const LoteriaGame = () => {
     isLastCard,
     togglePlay,
     nextCard,
-    resetGame,
     shuffleAndReset,
     toggleSound,
     setTimerDelay,
@@ -35,7 +34,6 @@ const LoteriaGame = () => {
             isPlaying={isPlaying}
             togglePlay={togglePlay}
             nextCard={nextCard}
-            resetGame={resetGame}
             shuffleAndReset={shuffleAndReset}
             isSoundEnabled={isSoundEnabled}
             toggleSound={toggleSound}

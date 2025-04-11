@@ -1,4 +1,3 @@
-
 import { useState, useRef, useCallback, useEffect } from 'react';
 import { Card } from '../data/loteriaCards';
 import loteriaCards from '../data/loteriaCards';
@@ -129,7 +128,6 @@ export const useLoteriaGame = () => {
     isLastCard,
     togglePlay,
     nextCard,
-    resetGame,
     shuffleAndReset,
     toggleSound,
     setTimerDelay,
