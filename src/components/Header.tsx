@@ -28,14 +28,14 @@ const Header = () => {
                 {t('navigation.home')}
               </Link>
             </li>
-            <li>
+            {/*<li>
               <Link 
                 to="/cartas" 
                 className="text-white hover:text-primary transition-colors"
               >
                 {t('navigation.cartas')}
               </Link>
-            </li>
+            </li>*/}
             <li>
               <LanguageToggle />
             </li>
