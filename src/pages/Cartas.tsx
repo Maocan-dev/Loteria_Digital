@@ -50,10 +50,11 @@ const Cartas = () => {
               >
                 {t('navigation.backToMain')}
               </Button>
+              <BackgroundToggleButton />
             </div>
-            <div className="flex flex-col items-center mb-6">            
-            <BackgroundToggleButton />
-          </div>
+                      
+           
+          
           </div>          
         </main>
         <Footer />
