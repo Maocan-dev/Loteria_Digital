@@ -42,18 +42,19 @@ const Cartas = () => {
               <CartasGrid cards={loteriaCards} isSoundEnabled={false} />
             </Card>
             
-            <div className="text-center">              
+            <div className="text-center flex flex-col items-center gap-4 mt-4">              
               <Button 
                 variant="outline" 
                 onClick={() => window.location.href = '/'}
                 className="mt-4">
                 {t('navigation.backToMain')}
               </Button>              
+              <BackgroundToggleButton />
             </div>
 
-              <div className="text-center">  
-              <BackgroundToggleButton />
-              </div> 
+              
+              
+              
 
           </div>          
         </main>
