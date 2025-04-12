@@ -124,42 +124,64 @@ const CartasGrid: React.FC<CartasGridProps> = ({ cards, isSoundEnabled }) => {
   return (
     <div className="space-y-4">
       <div className="flex justify-between items-center">
-        <h2 className="text-xl font-bold">{t('cartas.title')}</h2>
+        <h2
+          //style was added to text to change the background color and padding to match the original design
+          style={{
+            backgroundColor: "white",
+            padding: "10px",
+            borderRadius: "10px",
+          }}
+          className="text-xl font-bold"
+        >
+          {t("cartas.title")}
+        </h2>
         <div className="flex space-x-2">
-          <button 
+          <button
+            //style was added to the button to make it look like the original design
+            style={{
+              padding: "10px",
+              borderRadius: "10px",
+              width: "100%",
+            }}
             onClick={cleanGrid}
             className="px-3 py-1 text-sm bg-green-800 text-white rounded-md hover:bg-green-600"
           >
-            {t('cartas.cleanButton')}
+            {t("cartas.cleanButton")}
           </button>
-          <button 
+          <button
+            //style was added to the button to make it look like the original design
+            style={{
+              padding: "10px",
+              borderRadius: "10px",
+              width: "100%",
+            }}
             onClick={resetGrid}
             className="px-3 py-1 text-sm bg-primary text-white rounded-md hover:bg-primary/90"
           >
-            {t('cartas.resetButton')}
+            {t("cartas.resetButton")}
           </button>
         </div>
       </div>
-      
+
       <div className="grid grid-cols-4 gap-2">
         {gridItems.map((item, index) => (
-          <div 
+          <div
             key={`${item.card.id}-${index}`}
             className="relative aspect-[2/3] cursor-pointer overflow-hidden rounded-md border-2 border-gray-200 shadow-sm hover:shadow-md transition-shadow"
             onClick={() => handleCardClick(index)}
           >
             {/* Base card */}
-            <img 
+            <img
               src={`/images/carta (${item.card.id}).jpg`}
               alt={item.card.name}
               className="w-full h-full object-cover"
             />
-            
+
             {/* Overlay image (appears when clicked) */}
             {item.overlay && (
               <div className="absolute inset-0 flex items-center justify-center bg-black/50 animate-fade-in">
                 <div className="w-3/4 h-3/4 relative">
-                  <img 
+                  <img
                     src={item.overlay}
                     alt="Bean"
                     className="w-full h-full object-contain rounded"

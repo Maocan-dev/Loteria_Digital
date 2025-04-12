@@ -31,7 +31,7 @@ const LoteriaGame = () => {
     <div className="mx-auto max-w-4xl p-4">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
         <div className="md:col-span-2 space-y-6">
-          <GameControls 
+          <GameControls
             isPlaying={isPlaying}
             togglePlay={togglePlay}
             nextCard={nextCard}
@@ -41,9 +41,10 @@ const LoteriaGame = () => {
             isLastCard={isLastCard}
           />
 
-          <div className="bg-white rounded-lg shadow-md overflow-hidden">
-            <LoteriaDeck 
-              currentCard={currentCard} 
+          {/* Fondo de cartas */}
+          <div className="bg-white/20 rounded-lg shadow-md overflow-hidden">
+            <LoteriaDeck
+              currentCard={currentCard}
               remainingCards={remainingCards}
               totalCards={deck.length}
             />
@@ -53,7 +54,7 @@ const LoteriaGame = () => {
         </div>
 
         <div className="space-y-6">
-          <GameSettings 
+          <GameSettings
             timerDelay={timerDelay}
             setTimerDelay={setTimerDelay}
             soundVersion={soundVersion}
@@ -62,7 +63,7 @@ const LoteriaGame = () => {
             toggleSound={toggleSound}
           />
 
-          <GameStats 
+          <GameStats
             flippedCardsCount={flippedCards.length}
             remainingCards={remainingCards}
             totalCards={deck.length}
@@ -71,10 +72,7 @@ const LoteriaGame = () => {
       </div>
 
       {/* DealerPlayerSection - only showing grid */}
-      <DealerPlayerSection 
-        cards={deck}
-        isSoundEnabled={isSoundEnabled}
-      />
+      <DealerPlayerSection cards={deck} isSoundEnabled={isSoundEnabled} />
     </div>
   );
 };
