@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Card } from '../data/loteriaCards';
 import { useToast } from '../hooks/use-toast';
 import { useLanguage } from '../contexts/LanguageContext';
+import loteriaCards from '../data/loteriaCards';
 
 interface GridItem {
   card: Card;
@@ -18,6 +19,7 @@ const CartasGrid: React.FC<CartasGridProps> = ({ cards, isSoundEnabled }) => {
   const [gridItems, setGridItems] = useState<GridItem[]>([]);
   const { toast } = useToast();
   const { t } = useLanguage();
+  const [initialized, setInitialized] = useState(false);
 
   // Bean images paths - using correct paths from public/images/frijolitos
   const beanImages = [
@@ -31,12 +33,19 @@ const CartasGrid: React.FC<CartasGridProps> = ({ cards, isSoundEnabled }) => {
   ];
 
   useEffect(() => {
-    initializeGrid();
-  }, [cards]);
+    // Only initialize the grid once when the component mounts
+    if (!initialized) {
+      initializeGrid();
+      setInitialized(true);
+    }
+  }, [initialized]);
 
   const initializeGrid = () => {
-    // Shuffle and select 16 unique cards for the grid
-    const shuffledCards = [...cards].sort(() => Math.random() - 0.5);
+    // Use the original full deck of cards, not the shuffled one from props
+    const fixedDeck = [...loteriaCards];
+    
+    // Shuffle and select 16 unique cards for the grid, but only once
+    const shuffledCards = fixedDeck.sort(() => Math.random() - 0.5);
     const gridCards = shuffledCards.slice(0, 16);
     
     // Create grid items with no overlays initially
