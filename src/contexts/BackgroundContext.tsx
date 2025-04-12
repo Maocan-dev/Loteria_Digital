@@ -31,7 +31,8 @@ export const BackgroundProvider: React.FC<BackgroundProviderProps> = ({ children
       '/fondo/1.jpg',
       '/fondo/2.jpg',
       '/fondo/3.jpg',
-      '/fondo/4.jpg'
+      '/fondo/4.jpg',
+      '/fondo/5.jpg'
     ];
     
     setBackgroundImages(initialImages);
