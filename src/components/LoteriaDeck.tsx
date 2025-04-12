@@ -18,13 +18,13 @@ const LoteriaDeck: React.FC<LoteriaDeckProps> = ({ currentCard, remainingCards, 
   };
   
   return (
-    <div className="p-6 flex flex-col items-center">
+    <div className="p-4 flex flex-col items-center">
       {currentCard ? (
         <div className="w-full max-w-md">
-          <div className="aspect-[2/3] relative overflow-hidden rounded-lg shadow-lg border-2 border-gray-200">
+          <div className="aspect-[2/3] relative overflow-hidden rounded-lg shadow-md border border-gray-200">
             {!imageLoaded && (
               <div className="absolute inset-0 flex items-center justify-center bg-gray-100">
-                <div className="animate-pulse w-12 h-12 rounded-full bg-gray-200"></div>
+                <div className="animate-pulse w-8 h-8 rounded-full bg-gray-200"></div>
               </div>
             )}
             <img 
@@ -33,15 +33,15 @@ const LoteriaDeck: React.FC<LoteriaDeckProps> = ({ currentCard, remainingCards, 
               className={`w-full h-full object-cover ${!imageLoaded ? 'opacity-0' : 'opacity-100 transition-opacity duration-300'}`}
               onLoad={handleImageLoad}
             />
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 text-white">
-              <h3 className="text-xl font-bold">{currentCard.spanishName}</h3>
-              <p className="text-sm opacity-90">{currentCard.name}</p>
+            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-2 text-white">
+              <h3 className="text-md font-semibold truncate">{currentCard.spanishName}</h3>
+              <p className="text-xs opacity-90 truncate">{currentCard.name}</p>
             </div>
           </div>
           
-          <div className="mt-4 space-y-2">
-            <Progress value={progressPercentage} className="h-2" />
-            <p className="text-center text-gray-700">
+          <div className="mt-2 space-y-1">
+            <Progress value={progressPercentage} className="h-1" />
+            <p className="text-center text-xs text-gray-600">
               {totalCards - remainingCards} / {totalCards} ({progressPercentage}%)
             </p>
           </div>
@@ -56,3 +56,4 @@ const LoteriaDeck: React.FC<LoteriaDeckProps> = ({ currentCard, remainingCards, 
 };
 
 export default LoteriaDeck;
+
