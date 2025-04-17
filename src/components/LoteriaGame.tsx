@@ -72,6 +72,7 @@ const LoteriaGame = () => {
       </div>
 
       {/* DealerPlayerSection - only showing grid */}
+            
       <DealerPlayerSection cards={deck} isSoundEnabled={isSoundEnabled} />
     </div>
   );

@@ -128,8 +128,8 @@ const CartasGrid: React.FC<CartasGridProps> = ({ cards, isSoundEnabled }) => {
           //style was added to text to change the background color and padding to match the original design
           style={{
             backgroundColor: "white",
-            padding: "10px",
-            borderRadius: "10px",
+            padding: "5px",
+            borderRadius: "5px",
           }}
           className="text-xl font-bold"
         >
@@ -139,8 +139,8 @@ const CartasGrid: React.FC<CartasGridProps> = ({ cards, isSoundEnabled }) => {
           <button
             //style was added to the button to make it look like the original design
             style={{
-              padding: "10px",
-              borderRadius: "10px",
+              padding: "5px",
+              borderRadius: "5px",
               width: "100%",
             }}
             onClick={cleanGrid}
@@ -151,8 +151,8 @@ const CartasGrid: React.FC<CartasGridProps> = ({ cards, isSoundEnabled }) => {
           <button
             //style was added to the button to make it look like the original design
             style={{
-              padding: "10px",
-              borderRadius: "10px",
+              padding: "5px",
+              borderRadius: "5px",
               width: "100%",
             }}
             onClick={resetGrid}

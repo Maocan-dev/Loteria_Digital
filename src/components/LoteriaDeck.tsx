@@ -2,6 +2,9 @@
 import React, { useState } from 'react';
 import { Card } from '../data/loteriaCards';
 import { Progress } from './ui/progress';
+import { useLanguage } from "../contexts/LanguageContext";
+
+
 
 interface LoteriaDeckProps {
   currentCard: Card | null;
@@ -9,15 +12,18 @@ interface LoteriaDeckProps {
   totalCards: number;
 }
 
+
 const LoteriaDeck: React.FC<LoteriaDeckProps> = ({ currentCard, remainingCards, totalCards }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
   const progressPercentage = Math.round(((totalCards - remainingCards) / totalCards) * 100);
+  const { t } = useLanguage();
   
   const handleImageLoad = () => {
     setImageLoaded(true);
   };
   
   return (
+    
     <div className="p-4 flex flex-col items-center">
       {currentCard ? (
         <div className="w-full max-w-md">
@@ -48,7 +54,7 @@ const LoteriaDeck: React.FC<LoteriaDeckProps> = ({ currentCard, remainingCards, 
         </div>
       ) : (
         <div className="w-full max-w-md aspect-[2/3] flex items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50">
-          <p className="text-gray-500 text-lg font-bold">LOTERIA</p>
+          <p className="text-gray-500 text-lg font-bold">{t('cards.title')}</p>
         </div>
       )}
     </div>

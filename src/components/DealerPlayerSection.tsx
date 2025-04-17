@@ -17,7 +17,8 @@ const DealerPlayerSection: React.FC<DealerPlayerSectionProps> = ({
 }) => {
   return (
     <Card
-      style={{ padding: "20px" }}
+      //style={{ width: "120%", height: "120%", padding: "20px"}}
+      style={{ padding: "10px" }}
       // Fondo de tabla de cartas
       className="mb-6 bg-white/20 border-2 shadow-none"
     >
